@@ -13,14 +13,10 @@ Desktop GUI written using C++ and Qt, it does absolutely nothing
 
 <!-- relative links -->
 
-[screencast]: ./docs/Screencast.webm
-
 <!-- project links -->
 
 [url-repo]: https://github.com/shishifubing/app-desktop-useless-cpp-gui
 [url-license]: https://github.com/shishifubing/app-desktop-useless-cpp-gui/blob/main/LICENSE
-[url-screencast]: https://raw.githubusercontent.com/shishifubing/app-desktop-useless-cpp-gui/docs/no-ref/display-gif/docs/Screencast.webm.mp4
-[url-screencast2]: https://raw.githubusercontent.com/shishifubing/app-desktop-useless-cpp-gui/docs/no-ref/display-gif/docs/Screencast.webm
 
 <!-- external links -->
 
