@@ -9,9 +9,7 @@
 
 Desktop GUI written using C++ and Qt, it does absolutely nothing
 
-[![Screencast]](./docs/Screencast.webm.mp4)
-[![Direct link]][url-screencast]
-[![Direct link2]][url-screencast2]
+[Screencast.webm](https://user-images.githubusercontent.com/97828377/218940781-ffbede8c-d3a1-497c-aabf-484bcea08b12.webm)
 
 <!-- relative links -->
 
