@@ -19,6 +19,7 @@ Desktop GUI written using C++ and Qt, it does absolutely nothing
 
 [url-repo]: https://github.com/shishifubing/app-desktop-useless-cpp-gui
 [url-license]: https://github.com/shishifubing/app-desktop-useless-cpp-gui/blob/main/LICENSE
+[url-screencast]: https://raw.githubusercontent.com/shishifubing/app-desktop-useless-cpp-gui/docs/no-ref/display-gif/docs/Screencast.webm.mp4
 
 <!-- external links -->
 
