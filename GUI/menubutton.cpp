@@ -83,31 +83,38 @@ void MenuButton::setButtonStyleSheet(int state)
     case 0:
         if (this->type==-51 || this->type==-52)
             this->setStyleSheet("background-color: rgb(60, 60, 60); border-radius: 10px;"
+                                "outline: none;"
                                 "border: 1px solid rgb(60, 0, 100); color: white;");
         else
             this->setStyleSheet("background-color: rgb(60, 60, 60); border-radius: 20px;"
-                                 "border: 1px solid rgb(60, 0, 100); color: white;");
+                                "outline: none;"
+                                "border: 1px solid rgb(60, 0, 100); color: white;");
         break;
     case 1:
         if (this->type==-51 || this->type==-52)
             this->setStyleSheet("background-color: rgb(60, 0, 100); border-radius: 10px;"
-                            "border: 1px solid rgb(60, 0, 100); color: white;");
+                                "outline: none;"
+                                "border: 1px solid rgb(60, 0, 100); color: white;");
         else
             this->setStyleSheet("background-color: rgb(60, 0, 100); border-radius: 20px;"
-                                 "border: 1px solid rgb(60, 0, 100); color: white;");
+                                "outline: none;"
+                                "border: 1px solid rgb(60, 0, 100); color: white;");
         break;
     case 2:
         this->setStyleSheet("background-color: rgb(60, 0, 100); border-radius: 20px;"
                             "border: 1px solid rgb(60, 0, 100); color: white;"
+                            "outline: none;"
                             "border-left: 4px solid rgb(217, 0, 255);"
                             "border-right: 4px solid rgb(217, 0, 255);");
         break;
     case 3:
         if (this->type==-51 || this->type==-52)
             this->setStyleSheet("background-color: rgb(60, 0, 100); border-radius: 10px;"
+                                "outline: none;"
                                 "border: 2px solid rgb(217, 0, 255); color: white;");
         else
             this->setStyleSheet("background-color: rgb(60, 0, 100); border-radius: 20px;"
+                                "outline: none;"
                                 "border: 2px solid rgb(217, 0, 255); color: white;");
         break;
     }
