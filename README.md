@@ -1,22 +1,28 @@
-# [`app-desktop-useless-cpp-gui`][repo-url]
+# [`app-desktop-useless-cpp-gui`][url-repo]
 
 <!-- shields -->
 
-[![AGPLv3.0 License][license-shield]][license-url]
-[![Status][status-abandoned-shield]][repo-url]
+[![License][shield-license]][url-license]
+[![Status][shield-status-abandoned]][url-repo]
 
 <!-- description -->
 
-GUI written in C++ and Qt, it does absolutely nothing
+Desktop GUI written using C++ and Qt, it does absolutely nothing
 
-<!-- internal links -->
+![Screencast](./docs/Screencast.webm.mp4)
+
+<!-- relative links -->
+
+[screencast]: ./docs/Screencast.webm
+
+<!-- project links -->
+
+[url-repo]: https://github.com/shishifubing/app-desktop-useless-cpp-gui
+[url-license]: https://github.com/shishifubing/app-desktop-useless-cpp-gui/blob/main/LICENSE
 
 <!-- external links -->
 
-[repo-url]: https://github.com/shishifubing/app-desktop-useless-cpp-gui
-[license-url]: https://github.com/shishifubing/app-desktop-useless-cpp-gui/blob/main/LICENSE
-
 <!-- shield links -->
 
-[status-abandoned-shield]: https://img.shields.io/badge/status-abandoned-red?style=for-the-badge
-[license-shield]: https://img.shields.io/github/license/shishifubing/app-desktop-useless-cpp-gui.svg?style=for-the-badge
+[shield-status-abandoned]: https://img.shields.io/badge/status-abandoned-red?style=for-the-badge
+[shield-license]: https://img.shields.io/github/license/shishifubing/app-desktop-useless-cpp-gui.svg?style=for-the-badge
