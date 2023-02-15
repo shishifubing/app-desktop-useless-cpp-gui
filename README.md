@@ -9,9 +9,9 @@
 
 Desktop GUI written using C++ and Qt, it does absolutely nothing
 
-![Screencast](./docs/Screencast.webm.mp4)
-![Direct link][url-screencast]
-![Direct link2][url-screencast2]
+[![Screencast]](./docs/Screencast.webm.mp4)
+[![Direct link]][url-screencast]
+[![Direct link2]][url-screencast2]
 
 <!-- relative links -->
 
