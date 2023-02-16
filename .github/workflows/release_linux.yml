@@ -48,14 +48,14 @@ jobs:
         run: |
           wget -O deploy.AppImage ${{ env.APPIMAGE_URL }}
           chmod +x deploy.AppImage
-          export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${{ env.QT_LIB_PATH }}
-          cp ${{ env.SOURCE_DIR }}/linux/* .
+          export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${{ env.QT_LIB_PATH }}"
+          cp "${{ env.SOURCE_DIR }}/linux"/* .
           ./deploy.AppImage GUI.desktop         \
             -appimage                           \
             -no-translations                    \
             -qmldir="${{ env.SOURCE_DIR }}"     \
             -extra-plugins=renderers
-          mv Qt_*.AppImage ${{ env.ARTIFACT }}
+          mv Qt_*.AppImage "${{ env.ARTIFACT }}"
 
       - name: linux artifact
         uses: actions/upload-artifact@v3
