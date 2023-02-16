@@ -11,7 +11,6 @@ on:
 env:
   SOURCE_DIR: ${{ github.workspace }}/GUI
   QT_VERSION: 5.15.2
-  ARTIFACT: gui.AppImage
   APPIMAGE_URL: https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
 
 jobs:
@@ -65,5 +64,4 @@ jobs:
       - name: upload AppImage
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.ARTIFACT }}
           path: build/*.AppImage
