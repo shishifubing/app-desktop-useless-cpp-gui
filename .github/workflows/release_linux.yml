@@ -47,7 +47,6 @@ jobs:
           chmod +x deploy.AppImage
           ld_path="${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/gcc_64/lib/"
           export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${ld_path}"
-          cp "${{ env.SOURCE_DIR }}/linux"/* .
           ./deploy.AppImage GUI.desktop         \
             -appimage                           \
             -no-translations                    \
