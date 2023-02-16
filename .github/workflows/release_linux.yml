@@ -1,0 +1,64 @@
+name: Linux Release
+
+on:
+  push:
+    branches:
+      - "main"
+    tags:
+      - "v*"
+  pull_request:
+
+env:
+  SOURCE_DIR: ${{ github.workspace }}/GUI
+  QT_VERSION: 5.15.2
+  ARTIFACT: qt-planets-linux-build.AppImage
+  APPIMAGE_URL: https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
+  QT_LIB_PATH: ${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/gcc_64/lib/"
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+
+      - name: install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{ env.QT_VERSION }}
+          host: linux
+          target: desktop
+          arch: gcc_64
+          dir: ${{ runner.temp }}
+          modules: qtcharts qt3d
+          setup-python: false
+
+      #- name: create build directory
+      #  run: mkdir "${{ env.SOURCE_DIR }}/build"
+
+      - name: build
+        working-directory: ${{ env.SOURCE_DIR }}/build
+        run: |
+          qmake -r ${{ env.SOURCE_DIR }}/GUI.pro
+          make
+
+      - name: AppImage
+        working-directory: ${{ env.SOURCE_DIR }}/build
+        run: |
+          wget -O deploy.AppImage ${{ env.APPIMAGE_URL }}
+          chmod +x deploy.AppImage
+          export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${{ env.QT_LIB_PATH }}
+          cp ${{ env.SOURCE_DIR }}/linux/* .
+          ./deploy.AppImage GUI.desktop         \
+            -appimage                           \
+            -no-translations                    \
+            -qmldir="${{ env.SOURCE_DIR }}"     \
+            -extra-plugins=renderers
+          mv Qt_*.AppImage ${{ env.ARTIFACT }}
+
+      - name: linux artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.ARTIFACT }}
+          path: build/${{ env.ARTIFACT }}
