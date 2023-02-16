@@ -1,4 +1,4 @@
-name: linux release
+name: release(linux)
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
 env:
   SOURCE_DIR: ${{ github.workspace }}/GUI
   QT_VERSION: 5.15.2
-  ARTIFACT: qt-planets-linux-build.AppImage
+  ARTIFACT: gui.AppImage
   APPIMAGE_URL: https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
 
 jobs:
