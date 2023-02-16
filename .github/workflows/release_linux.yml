@@ -47,7 +47,8 @@ jobs:
         run: |
           wget -O deploy.AppImage ${{ env.APPIMAGE_URL }}
           chmod +x deploy.AppImage
-          export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${{ env.QT_LIB_PATH }}"
+          ld_path="${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/gcc_64/lib/"
+          export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${ld_path}"
           cp "${{ env.SOURCE_DIR }}/linux"/* .
           ./deploy.AppImage GUI.desktop         \
             -appimage                           \
