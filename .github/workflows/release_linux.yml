@@ -1,0 +1,67 @@
+name: release(linux)
+
+on:
+  push:
+    branches:
+      - "main"
+    tags:
+      - "v*"
+  pull_request:
+
+env:
+  SOURCE_DIR: ${{ github.workspace }}/GUI
+  QT_VERSION: 5.15.2
+  APPIMAGE_URL: https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: setup FUSE
+        run: |
+          sudo apt-get update
+          sudo apt-get install fuse libfuse2
+
+      - name: checkout repo
+        uses: actions/checkout@v3
+
+      - name: install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{ env.QT_VERSION }}
+          target: desktop
+          arch: gcc_64
+          dir: ${{ runner.temp }}
+          setup-python: true
+
+      - name: create build directory
+        run: mkdir "${{ env.SOURCE_DIR }}/build"
+
+      - name: build
+        working-directory: ${{ env.SOURCE_DIR }}/build
+        run: |
+          qmake -r ${{ env.SOURCE_DIR }}/GUI.pro
+          make
+
+      - name: create AppImage
+        working-directory: ${{ env.SOURCE_DIR }}/build
+        run: |
+          wget -O deploy.AppImage ${{ env.APPIMAGE_URL }}
+          chmod +x deploy.AppImage
+          ld_path="${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/gcc_64/lib/"
+          export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${ld_path}"
+          cp "${{ env.SOURCE_DIR }}/GUI.desktop" \
+            "${{ env.SOURCE_DIR }}/GUI.png"      \
+            ./
+          ./deploy.AppImage GUI.desktop         \
+            -appimage                           \
+            -no-translations                    \
+            -qmldir="${{ env.SOURCE_DIR }}"     \
+            -extra-plugins=renderers
+          rm ./deploy.AppImage
+
+      - name: upload AppImage
+        uses: actions/upload-artifact@v3
+        with:
+          path: ${{ env.SOURCE_DIR }}/build/*.AppImage
