@@ -34,8 +34,8 @@ jobs:
           modules: qtcharts qt3d
           setup-python: false
 
-      #- name: create build directory
-      #  run: mkdir "${{ env.SOURCE_DIR }}/build"
+      - name: create build directory
+        run: mkdir "${{ env.SOURCE_DIR }}/build"
 
       - name: build
         working-directory: ${{ env.SOURCE_DIR }}/build
