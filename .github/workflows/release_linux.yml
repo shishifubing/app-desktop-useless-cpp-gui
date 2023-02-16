@@ -16,14 +16,13 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: setup FUSE
         run: |
           sudo apt-get update
           sudo apt-get install fuse libfuse2
-          sudo modprobe -v fuse
 
       - name: checkout repo
         uses: actions/checkout@v3
