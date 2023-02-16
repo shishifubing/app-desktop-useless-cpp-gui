@@ -60,7 +60,7 @@ jobs:
             -no-translations                    \
             -qmldir="${{ env.SOURCE_DIR }}"     \
             -extra-plugins=renderers
-          mv Qt_*.AppImage "${{ env.ARTIFACT }}"
+          mv GUI-*-x86_64.AppImage "${{ env.ARTIFACT }}"
 
       - name: upload AppImage
         uses: actions/upload-artifact@v3
