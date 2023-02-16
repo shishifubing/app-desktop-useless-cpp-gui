@@ -13,7 +13,6 @@ env:
   QT_VERSION: 5.15.2
   ARTIFACT: qt-planets-linux-build.AppImage
   APPIMAGE_URL: https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
-  QT_LIB_PATH: ${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/gcc_64/lib/"
 
 jobs:
   build:
