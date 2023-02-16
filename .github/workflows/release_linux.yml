@@ -34,7 +34,7 @@ jobs:
           target: desktop
           arch: gcc_64
           dir: ${{ runner.temp }}
-          setup-python: false
+          setup-python: true
 
       - name: create build directory
         run: mkdir "${{ env.SOURCE_DIR }}/build"
@@ -45,7 +45,7 @@ jobs:
           qmake -r ${{ env.SOURCE_DIR }}/GUI.pro
           make
 
-      - name: AppImage
+      - name: create AppImage
         working-directory: ${{ env.SOURCE_DIR }}/build
         run: |
           wget -O deploy.AppImage ${{ env.APPIMAGE_URL }}
@@ -59,7 +59,7 @@ jobs:
             -extra-plugins=renderers
           mv Qt_*.AppImage "${{ env.ARTIFACT }}"
 
-      - name: linux artifact
+      - name: upload AppImage
         uses: actions/upload-artifact@v3
         with:
           name: ${{ env.ARTIFACT }}
