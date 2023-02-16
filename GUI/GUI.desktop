@@ -3,3 +3,4 @@ Type=Application
 Name=GUI
 Comment=https://github.com/shishifubing/app-desktop-useless-cpp-gui
 Exec=GUI
+Categories=Office;
