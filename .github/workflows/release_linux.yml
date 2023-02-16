@@ -64,4 +64,4 @@ jobs:
       - name: upload AppImage
         uses: actions/upload-artifact@v3
         with:
-          path: build/*.AppImage
+          path: ${{ env.SOURCE_DIR }}/build/*.AppImage
