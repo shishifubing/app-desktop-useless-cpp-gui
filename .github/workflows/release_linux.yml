@@ -19,6 +19,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: setup FUSE
+        run: |
+          sudo apt-get update
+          sudo apt-get install fuse libfuse2
+          sudo modprobe -v fuse
+
       - name: checkout repo
         uses: actions/checkout@v3
 
