@@ -1,13 +1,17 @@
 # [`app-desktop-useless-cpp-gui`][url-repo]
 
-<!-- shields -->
-
 [![License][shield-license]][url-license]
 [![Status][shield-status-abandoned]][url-repo]
 
-<!-- description -->
+Desktop GUI written using C++ and Qt
 
-Desktop GUI written using C++ and Qt, it does absolutely nothing
+## Features
+
+- Absolutely useless
+- Has CI
+- Packaged as an AppImage
+
+## Demo
 
 [Screencast.webm](https://user-images.githubusercontent.com/97828377/218940781-ffbede8c-d3a1-497c-aabf-484bcea08b12.webm)
 
