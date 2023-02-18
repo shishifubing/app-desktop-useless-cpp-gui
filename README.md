@@ -1,3 +1,5 @@
+<div align="center">
+
 # [`app-desktop-useless-cpp-gui`][url-repo]
 
 [![License][shield-license]][url-license]
@@ -7,6 +9,8 @@
 [![Appimage][shield-appimage]][url-release-latest]
 
 Desktop GUI written using C++ and Qt
+
+</div>
 
 ## Features
 
