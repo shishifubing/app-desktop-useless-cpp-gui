@@ -16,6 +16,8 @@ Desktop GUI written using C++ and Qt
 
 ## Demo
 
+> **Note** WebM is broken on Edge, try another browser
+
 [Screencast.webm](https://user-images.githubusercontent.com/97828377/218940781-ffbede8c-d3a1-497c-aabf-484bcea08b12.webm)
 
 <!-- relative links -->
