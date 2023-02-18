@@ -1,4 +1,4 @@
-name: release(linux)
+name: build
 
 on:
   push:
@@ -14,7 +14,7 @@ env:
   APPIMAGE_URL: https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
 
 jobs:
-  build:
+  linux:
     runs-on: ubuntu-18.04
 
     steps:
