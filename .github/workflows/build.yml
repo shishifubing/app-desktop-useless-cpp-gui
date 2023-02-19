@@ -10,6 +10,7 @@ on:
 
 env:
   SOURCE_DIR: ${{ github.workspace }}/GUI
+  BUILD_DIR: ${{ github.workspace }}/_build
   QT_VERSION: "5.15.2"
   APPIMAGE_URL: https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
   BUILD_WRAPPER_OUT_DIR: ${{ github.workspace }}/build_wrapper_output_directory
@@ -44,10 +45,10 @@ jobs:
           setup-python: false
 
       - name: create build directory
-        run: mkdir "${{ env.SOURCE_DIR }}/build"
+        run: mkdir "${{ BUILD_DIR }}"
 
       - name: build
-        working-directory: ${{ env.SOURCE_DIR }}/build
+        working-directory: ${{ env.BUILD_DIR }}
         # 'make' is the actual build command
         # build-wrapper is there for Sonarqube analysis
         run: |
@@ -65,7 +66,7 @@ jobs:
             --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}"
 
       - name: create an AppImage
-        working-directory: ${{ env.SOURCE_DIR }}/build
+        working-directory: ${{ env.BUILD_DIR }}
         run: |
           wget -O deploy.AppImage ${{ env.APPIMAGE_URL }}
           chmod +x deploy.AppImage
@@ -83,4 +84,4 @@ jobs:
       - name: upload the AppImage
         uses: actions/upload-artifact@v3
         with:
-          path: ${{ env.SOURCE_DIR }}/build/*.AppImage
+          path: ${{ env.BUILD_DIR }}/*.AppImage
