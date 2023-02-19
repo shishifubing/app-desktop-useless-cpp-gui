@@ -41,7 +41,7 @@ jobs:
           target: desktop
           arch: gcc_64
           dir: ${{ runner.temp }}
-          setup-python: true
+          setup-python: false
 
       - name: create build directory
         run: mkdir "${{ env.SOURCE_DIR }}/build"
