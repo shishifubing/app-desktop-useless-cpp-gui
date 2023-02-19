@@ -24,18 +24,6 @@ jobs:
       options: --privileged
 
     steps:
-      - name: >-
-          setup directory variables
-          [workaround for https://github.com/actions/runner/issues/2058]
-        run: |
-          build_dir="${{ runner.temp }}/_build"
-          mkdir -p "${build_dir}"
-
-          echo "SOURCE_DIR=${GITHUB_WORKSPACE}/GUI" >>"${GITHUB_ENV}"
-          echo "BUILD_DIR=${build_dir}" >>"${GITHUB_ENV}"
-          echo "BUILD_WRAPPER_OUT_DIR=${{ runner.temp }}/_sonar" >>"${GITHUB_ENV}"
-          echo "QT_DIR=${{ runner.temp }}/_qt" >>"${GITHUB_ENV}"
-
       - name: install packages
         run: |
           apt-get update -y
@@ -49,6 +37,18 @@ jobs:
         with:
           # shallow clones should be disabled for better relevancy of analysis
           fetch-depth: 0
+
+      - name: >-
+          setup directory variables
+          [workaround for https://github.com/actions/runner/issues/2058]
+        run: |
+          build_dir="${GITHUB_WORKSPACE}/_build"
+          mkdir -p "${build_dir}"
+
+          echo "SOURCE_DIR=${GITHUB_WORKSPACE}/GUI" >>"${GITHUB_ENV}"
+          echo "BUILD_DIR=${build_dir}" >>"${GITHUB_ENV}"
+          echo "BUILD_WRAPPER_OUT_DIR=${GITHUB_WORKSPACE}/_sonar" >>"${GITHUB_ENV}"
+          echo "QT_DIR=${GITHUB_WORKSPACE}/_qt" >>"${GITHUB_ENV}"
 
       - name: install sonar-scanner and build-wrapper
         uses: SonarSource/sonarcloud-github-c-cpp@v1
