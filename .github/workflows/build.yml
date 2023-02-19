@@ -14,6 +14,7 @@ env:
   SOURCE_DIR: ${{ github.workspace }}/GUI
   QT_VERSION: 5.15.2
   APPIMAGE_URL: https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
+  BUILD_WRAPPER_OUT_DIR: ${{ github.workspace }}/build_wrapper_output_directory
 
 jobs:
   linux:
@@ -52,8 +53,8 @@ jobs:
         # build-wrapper is there for Sonarqube analysis
         run: |
           qmake -r ${{ env.SOURCE_DIR }}/GUI.pro
-          build-wrapper-linux-x86-64                \
-            --out-dir "${{ env.SOURCE_DIR }}/build" \
+          build-wrapper-linux-x86-64                     \
+            --out-dir "${{ env.BUILD_WRAPPER_OUT_DIR }}" \
             make
 
       - name: run sonar-scanner
@@ -61,8 +62,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          sonar-scanner                                                               \
-            --define sonar.cfamily.build-wrapper-output="${{ env.SOURCE_DIR }}/build"
+          sonar-scanner                                                                    \
+            --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}"
 
       - name: create an AppImage
         working-directory: ${{ env.SOURCE_DIR }}/build
