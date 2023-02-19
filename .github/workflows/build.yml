@@ -42,7 +42,7 @@ jobs:
       - name: install packages
         run: |
           apt-get update -y
-          apt-get install -y fuse libfuse2 curl unzip sudo libc6
+          apt-get install -y fuse libfuse2 curl unzip sudo libc6 python3.10
 
       - name: install sonar-scanner and build-wrapper
         uses: SonarSource/sonarcloud-github-c-cpp@v1
