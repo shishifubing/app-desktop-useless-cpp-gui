@@ -29,6 +29,7 @@ Desktop GUI written using C++ and Qt
 - Absolutely useless
 - Has CI
 - Packaged as an AppImage
+- Scanned by sonarqube 
 
 ## Demo
 
