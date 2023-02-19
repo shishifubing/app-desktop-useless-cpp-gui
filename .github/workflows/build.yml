@@ -30,7 +30,7 @@ jobs:
           apt-get install -y                                                 \
             fuse libfuse2 curl unzip sudo libc6 python3 python3-pip wget     \
             software-properties-common                                       \
-            libfontconfig1 fontconfig libfontconfig1-dev
+            libfontconfig1 fontconfig libfontconfig1-dev libxkbcommon-x11-0
           # the official repo only allows you to install git 2.17
           add-apt-repository ppa:git-core/ppa
           apt-get install -y git
