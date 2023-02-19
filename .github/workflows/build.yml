@@ -28,11 +28,7 @@ jobs:
           fetch-depth: 0
 
       - name: create build directory
-        run: |
-          echo "${PWD}"
-          ls
-          echo ${{ github.workspace }}
-          mkdir "${{ env.BUILD_DIR }}"
+        run: mkdir -p "${{ env.BUILD_DIR }}"
 
       - name: install packages
         run: |
