@@ -13,6 +13,7 @@ on:
 env:
   QT_VERSION: "5.15.2"
   APPIMAGE_URL: https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
+  PROJECT_NAME: app-desktop-useless-cpp-gui
 
 jobs:
   linux:
@@ -56,6 +57,7 @@ jobs:
           echo "BUILD_DIR=${build_dir}" >>"${GITHUB_ENV}"
           echo "BUILD_WRAPPER_OUT_DIR=${GITHUB_WORKSPACE}/_sonar" >>"${GITHUB_ENV}"
           echo "QT_DIR=${GITHUB_WORKSPACE}/_qt" >>"${GITHUB_ENV}"
+          echo "ARTIFACT_PATH=${GITHUB_WORKSPACE}/${{ env.PROJECT_NAME }}" >>"${GITHUB_ENV}"
 
       - name: install sonar-scanner and build-wrapper
         uses: SonarSource/sonarcloud-github-c-cpp@v1
@@ -105,9 +107,10 @@ jobs:
             -appimage                           \
             -no-translations                    \
             -qmldir="${{ env.SOURCE_DIR }}"
-          rm ./deploy.AppImage
+
+          echo "ARTIFACT_PATH=$(find . -name '*.AppImage')" >>"${GITHUB_ENV}"
 
       - name: upload the AppImage
         uses: actions/upload-artifact@v3
         with:
-          path: ${{ env.BUILD_DIR }}/*.AppImage
+          path: ${{ env.ARTIFACT_PATH }}
