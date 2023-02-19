@@ -29,8 +29,8 @@ jobs:
         run: |
           echo "SOURCE_DIR=${GITHUB_WORKSPACE}/GUI" >>"${GITHUB_ENV}"
           echo "BUILD_DIR=${GITHUB_WORKSPACE}/_build" >>"${GITHUB_ENV}"
-          echo "BUILD_WRAPPER_OUT_DIR=${GITHUB_WORKSPACE}/_wrapper_output" >>"${GITHUB_ENV}"
-          echo "QT_DIR=${{ runner.temp }}" >>"${GITHUB_ENV}"
+          echo "BUILD_WRAPPER_OUT_DIR=${GITHUB_WORKSPACE}/_sonar" >>"${GITHUB_ENV}"
+          echo "QT_DIR=${GITHUB_WORKSPACE}/_qt" >>"${GITHUB_ENV}"
 
       - name: checkout repo
         uses: actions/checkout@v3
@@ -77,6 +77,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           sonar-scanner                                                                    \
+            --define sonar.projectBaseDir="${WORKSPACE"                                    \
             --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}"
 
       - name: set LD_LIBRARY_PATH
