@@ -42,7 +42,8 @@ jobs:
       - name: install packages
         run: |
           apt-get update -y
-          apt-get install -y fuse libfuse2 curl unzip sudo libc6 python3 python3-pip
+          apt-get install -y                                             \
+            fuse libfuse2 curl unzip sudo libc6 python3 python3-pip wget
           pip3 install --upgrade pip
           pip3 install setuptools
 
