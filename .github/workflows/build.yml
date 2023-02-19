@@ -52,14 +52,17 @@ jobs:
         # build-wrapper is there for Sonarqube analysis
         run: |
           qmake -r ${{ env.SOURCE_DIR }}/GUI.pro
-          build-wrapper-linux-x86-64 --out-dir . make
+          build-wrapper-linux-x86-64                \
+            --out-dir "${{ env.SOURCE_DIR }}/build" \
+            make
 
       - name: run sonar-scanner
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          sonar-scanner --define sonar.cfamily.build-wrapper-output=.
+          sonar-scanner                                                               \
+            --define sonar.cfamily.build-wrapper-output="${{ env.SOURCE_DIR }}/build"
 
       - name: create an AppImage
         working-directory: ${{ env.SOURCE_DIR }}/build
