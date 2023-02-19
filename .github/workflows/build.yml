@@ -113,7 +113,7 @@ jobs:
             -no-translations                    \
             -qmldir="${{ env.SOURCE_DIR }}"
 
-          mv *.AppImage "${{ env.ARTIFACT_PATH }}"
+          mv GUI*.AppImage "${{ env.ARTIFACT_PATH }}"
 
       - name: upload the AppImage
         uses: actions/upload-artifact@v3
