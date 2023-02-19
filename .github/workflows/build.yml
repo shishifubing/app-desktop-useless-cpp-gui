@@ -106,9 +106,9 @@ jobs:
           ./deploy.AppImage GUI.desktop         \
             -appimage                           \
             -no-translations                    \
-            -qmldir="${{ env.SOURCE_DIR }}"
+            -qmldir="${{ env.SOURCE_DIR }}"ARTIFACT_PATH
 
-          echo "ARTIFACT_PATH=$(find . -name '*.AppImage')" >>"${GITHUB_ENV}"
+          echo ARTIFACT_PATH=*.AppImage >>"${GITHUB_ENV}"
 
       - name: upload the AppImage
         uses: actions/upload-artifact@v3
