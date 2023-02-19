@@ -25,10 +25,15 @@ jobs:
 
     steps:
       - name: >-
-          setup directory variables [workaround for https://github.com/actions/runner/issues/2058]
+          setup directory variables
+          [workaround for https://github.com/actions/runner/issues/2058]
         run: |
+          build_dir="${GITHUB_WORKSPACE}/_build"
+          mkdir -p "${build_dir}"
+          git branch
+
           echo "SOURCE_DIR=${GITHUB_WORKSPACE}/GUI" >>"${GITHUB_ENV}"
-          echo "BUILD_DIR=${GITHUB_WORKSPACE}/_build" >>"${GITHUB_ENV}"
+          echo "BUILD_DIR=${build_dir}" >>"${GITHUB_ENV}"
           echo "BUILD_WRAPPER_OUT_DIR=${GITHUB_WORKSPACE}/_sonar" >>"${GITHUB_ENV}"
           echo "QT_DIR=${GITHUB_WORKSPACE}/_qt" >>"${GITHUB_ENV}"
 
@@ -37,9 +42,6 @@ jobs:
         with:
           # shallow clones should be disabled for better relevancy of analysis
           fetch-depth: 0
-
-      - name: create build directory
-        run: mkdir -p "${{ env.BUILD_DIR }}"
 
       - name: install packages
         run: |
@@ -76,8 +78,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          sonar-scanner                                                                     \
-            --define sonar.projectBaseDir="${WORKSPACE}"                                    \
+          sonar-scanner                                                                    \
             --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}"
 
       - name: set LD_LIBRARY_PATH
