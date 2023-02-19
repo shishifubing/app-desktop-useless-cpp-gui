@@ -52,9 +52,9 @@ jobs:
         # 'make' is the actual build command
         # build-wrapper is there for Sonarqube analysis
         run: |
-          qmake -r ${{ env.SOURCE_DIR }}/GUI.pro
-          build-wrapper-linux-x86-64                     \
-            --out-dir "${{ env.BUILD_WRAPPER_OUT_DIR }}" \
+          qmake -r "${{ env.SOURCE_DIR }}/GUI.pro"
+          build-wrapper-linux-x86-64                \
+            --out-dir "${{ env.SOURCE_DIR }}/build" \
             make
 
       - name: run sonar-scanner
