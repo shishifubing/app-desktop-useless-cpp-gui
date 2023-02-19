@@ -24,6 +24,12 @@ jobs:
       options: --privileged
 
     steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+        with:
+          # shallow clones should be disabled for better relevancy of analysis
+          fetch-depth: 0
+
       - name: >-
           setup directory variables
           [workaround for https://github.com/actions/runner/issues/2058]
@@ -36,12 +42,6 @@ jobs:
           echo "BUILD_DIR=${build_dir}" >>"${GITHUB_ENV}"
           echo "BUILD_WRAPPER_OUT_DIR=${GITHUB_WORKSPACE}/_sonar" >>"${GITHUB_ENV}"
           echo "QT_DIR=${GITHUB_WORKSPACE}/_qt" >>"${GITHUB_ENV}"
-
-      - name: checkout repo
-        uses: actions/checkout@v3
-        with:
-          # shallow clones should be disabled for better relevancy of analysis
-          fetch-depth: 0
 
       - name: install packages
         run: |
