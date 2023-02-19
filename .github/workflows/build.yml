@@ -16,9 +16,9 @@ env:
 
 jobs:
   linux:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     container:
-      image: python:3.10-bullseye
+      image: python:3.10-buster
       options: --privileged
 
     steps:
