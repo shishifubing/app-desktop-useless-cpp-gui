@@ -36,7 +36,6 @@ jobs:
         run: |
           build_dir="${GITHUB_WORKSPACE}/_build"
           mkdir -p "${build_dir}"
-          git branch
 
           echo "SOURCE_DIR=${GITHUB_WORKSPACE}/GUI" >>"${GITHUB_ENV}"
           echo "BUILD_DIR=${build_dir}" >>"${GITHUB_ENV}"
@@ -50,6 +49,7 @@ jobs:
             fuse libfuse2 curl unzip sudo libc6 python3 python3-pip wget git
           pip3 install --upgrade pip
           pip3 install setuptools
+          git branch
 
       - name: install sonar-scanner and build-wrapper
         uses: SonarSource/sonarcloud-github-c-cpp@v1
