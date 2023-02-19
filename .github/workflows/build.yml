@@ -13,6 +13,7 @@ on:
 env:
   QT_VERSION: "5.15.2"
   APPIMAGE_URL: https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
+  QT_DIR: ${{ runner.temp }}
 
 jobs:
   linux:
@@ -57,7 +58,7 @@ jobs:
           version: ${{ env.QT_VERSION }}
           target: desktop
           arch: gcc_64
-          dir: ${{ runner.temp }}
+          dir: ${{ env.QT_DIR }}
           setup-python: false
 
       - name: build
@@ -80,8 +81,7 @@ jobs:
 
       - name: set LD_LIBRARY_PATH
         run: |
-          ld_path="${GITHUB_WORKSPACE}/Qt/${{ env.QT_VERSION }}/gcc_64/lib"
-          ls "${ld_path}"
+          ld_path="${{ env.QT_DIR }}/Qt/${{ env.QT_VERSION }}/gcc_64/lib"
           echo LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${ld_path}" >>"${GITHUB_ENV}"
 
       - name: package as an AppImage
