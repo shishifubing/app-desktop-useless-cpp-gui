@@ -6,6 +6,14 @@
 [![Build][shield-workflow-build]][url-workflow-build]
 [![Status][shield-status-abandoned]][url-repo]
 
+[![Appimage][shield-appimage]][url-release-latest]
+
+Desktop GUI written using C++ and Qt
+
+</div>
+
+## Sonarqube
+
 [![Bugs][url-sonar-bugs]][url-sonar]
 [![Code Smells][url-sonar-code_smells]][url-sonar]
 [![Coverage][url-sonar-coverage]][url-sonar]
@@ -17,12 +25,6 @@
 [![Security Rating][url-sonar-security_rating]][url-sonar]
 [![Technical Debt][url-sonar-sqale_index]][url-sonar]
 [![Vulnerabilities][url-sonar-vulnerabilities]][url-sonar]
-
-[![Appimage][shield-appimage]][url-release-latest]
-
-Desktop GUI written using C++ and Qt
-
-</div>
 
 ## Features
 
