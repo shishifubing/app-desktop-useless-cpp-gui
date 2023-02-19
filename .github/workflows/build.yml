@@ -76,8 +76,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          sonar-scanner                                                                    \
-            --define sonar.projectBaseDir="${WORKSPACE"                                    \
+          sonar-scanner                                                                     \
+            --define sonar.projectBaseDir="${WORKSPACE}"                                    \
             --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}"
 
       - name: set LD_LIBRARY_PATH
