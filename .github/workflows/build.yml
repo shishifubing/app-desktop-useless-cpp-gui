@@ -7,24 +7,65 @@ on:
     tags:
       - "v*"
   pull_request:
+  # allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 env:
-  SOURCE_DIR: ${{ github.workspace }}/GUI
-  QT_VERSION: 5.15.2
+  QT_VERSION: "5.15.2"
   APPIMAGE_URL: https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
+  PROJECT_NAME: app-desktop-useless-cpp-gui
 
 jobs:
   linux:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
+    container:
+      # old image is used because of https://github.com/probonopd/linuxdeployqt/issues/340
+      image: ubuntu:18.04
+      # for appimage build - https://github.com/s3fs-fuse/s3fs-fuse/issues/647#issuecomment-330398877
+      options: --privileged
 
     steps:
-      - name: setup FUSE
+      - name: install packages
         run: |
-          sudo apt-get update
-          sudo apt-get install fuse libfuse2
+          apt-get update -y
+          apt-get install -y                                                 \
+            fuse libfuse2 curl unzip sudo libc6 python3 python3-pip wget     \
+            software-properties-common                                       \
+            libfontconfig1 fontconfig libfontconfig1-dev libxkbcommon-x11-0
+
+          # the official repo only allows you to install git 2.17
+          add-apt-repository ppa:git-core/ppa
+          apt-get install -y git
+
+          pip3 install --upgrade pip
+          pip3 install setuptools
 
       - name: checkout repo
         uses: actions/checkout@v3
+        with:
+          # shallow clones should be disabled for better relevancy of analysis
+          fetch-depth: 0
+
+      - name: >-
+          setup directory variables
+          [workaround for https://github.com/actions/runner/issues/2058]
+        run: |
+          build_dir="${GITHUB_WORKSPACE}/_build"
+          mkdir -p "${build_dir}"
+
+          echo "SOURCE_DIR=${GITHUB_WORKSPACE}/GUI" \
+            >>"${GITHUB_ENV}"
+          echo "BUILD_DIR=${build_dir}" \
+            >>"${GITHUB_ENV}"
+          echo "BUILD_WRAPPER_OUT_DIR=${GITHUB_WORKSPACE}/_sonar" \
+            >>"${GITHUB_ENV}"
+          echo "QT_DIR=${GITHUB_WORKSPACE}/_qt" \
+            >>"${GITHUB_ENV}"
+          echo "ARTIFACT_PATH=${GITHUB_WORKSPACE}/${{ env.PROJECT_NAME }}.AppImage" \
+            >>"${GITHUB_ENV}"
+
+      - name: install sonar-scanner and build-wrapper
+        uses: SonarSource/sonarcloud-github-c-cpp@v1
 
       - name: install Qt
         uses: jurplel/install-qt-action@v3
@@ -32,36 +73,49 @@ jobs:
           version: ${{ env.QT_VERSION }}
           target: desktop
           arch: gcc_64
-          dir: ${{ runner.temp }}
-          setup-python: true
-
-      - name: create build directory
-        run: mkdir "${{ env.SOURCE_DIR }}/build"
+          dir: ${{ env.QT_DIR }}
+          setup-python: false
 
       - name: build
-        working-directory: ${{ env.SOURCE_DIR }}/build
+        working-directory: ${{ env.BUILD_DIR }}
+        # 'make' is the actual build command
+        # build-wrapper is there for Sonarqube analysis
         run: |
-          qmake -r ${{ env.SOURCE_DIR }}/GUI.pro
-          make
+          qmake -r "${{ env.SOURCE_DIR }}/GUI.pro"
+          build-wrapper-linux-x86-64                     \
+            --out-dir "${{ env.BUILD_WRAPPER_OUT_DIR }}" \
+            make
 
-      - name: create AppImage
-        working-directory: ${{ env.SOURCE_DIR }}/build
+      - name: run sonar-scanner
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          wget -O deploy.AppImage ${{ env.APPIMAGE_URL }}
+          sonar-scanner                                                                    \
+            --define sonar.sources="${{ env.SOURCE_DIR }}"                                 \
+            --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}"
+
+      - name: set LD_LIBRARY_PATH
+        run: |
+          ld_path="${{ env.QT_DIR }}/Qt/${{ env.QT_VERSION }}/gcc_64/lib"
+          echo LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${ld_path}" >>"${GITHUB_ENV}"
+
+      - name: package as an AppImage
+        working-directory: ${{ env.BUILD_DIR }}
+        run: |
+          wget --no-verbose -O deploy.AppImage ${{ env.APPIMAGE_URL }}
           chmod +x deploy.AppImage
-          ld_path="${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/gcc_64/lib/"
-          export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${ld_path}"
           cp "${{ env.SOURCE_DIR }}/GUI.desktop" \
             "${{ env.SOURCE_DIR }}/GUI.png"      \
             ./
           ./deploy.AppImage GUI.desktop         \
             -appimage                           \
             -no-translations                    \
-            -qmldir="${{ env.SOURCE_DIR }}"     \
-            -extra-plugins=renderers
-          rm ./deploy.AppImage
+            -qmldir="${{ env.SOURCE_DIR }}"
 
-      - name: upload AppImage
+          mv GUI*.AppImage "${{ env.ARTIFACT_PATH }}"
+
+      - name: upload the AppImage
         uses: actions/upload-artifact@v3
         with:
-          path: ${{ env.SOURCE_DIR }}/build/*.AppImage
+          path: ${{ env.ARTIFACT_PATH }}
