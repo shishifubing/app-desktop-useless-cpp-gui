@@ -12,7 +12,7 @@ on:
 
 env:
   SOURCE_DIR: ${{ github.workspace }}/GUI
-  BUILD_DIR: ${{ github.workspace }}/_build
+  BUILD_DIR: ${{ github.workspace }}/GUI/_build
   QT_VERSION: "5.15.2"
   APPIMAGE_URL: https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
   BUILD_WRAPPER_OUT_DIR: ${{ github.workspace }}/build_wrapper_output_directory
