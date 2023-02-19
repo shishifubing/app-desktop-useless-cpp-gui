@@ -27,6 +27,13 @@ jobs:
           # shallow clones should be disabled for better relevancy of analysis
           fetch-depth: 0
 
+      - name: create build directory
+        run: |
+          echo "${PWD}"
+          ls
+          echo ${{ github.workspace }}
+          mkdir "${{ env.BUILD_DIR }}"
+
       - name: install packages
         run: |
           apt-get update -y
@@ -43,12 +50,6 @@ jobs:
           arch: gcc_64
           dir: ${{ runner.temp }}
           setup-python: false
-
-      - name: create build directory
-        run: |
-          echo "${PWD}"
-          ls
-          mkdir "${{ env.BUILD_DIR }}"
 
       - name: build
         working-directory: ${{ env.BUILD_DIR }}
