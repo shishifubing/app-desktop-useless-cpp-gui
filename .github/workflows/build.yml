@@ -16,7 +16,7 @@ env:
 
 jobs:
   linux:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     steps:
       - name: setup FUSE
@@ -68,7 +68,7 @@ jobs:
         run: |
           wget -O deploy.AppImage ${{ env.APPIMAGE_URL }}
           chmod +x deploy.AppImage
-          ld_path="${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/gcc_64/lib"
+          ld_path="${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/gcc_64/lib/"
           export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${ld_path}"
           cp "${{ env.SOURCE_DIR }}/GUI.desktop" \
             "${{ env.SOURCE_DIR }}/GUI.png"      \
