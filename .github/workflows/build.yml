@@ -23,7 +23,7 @@ jobs:
       - name: install FUSE and curl
         run: |
           apt-get update -y
-          apt-get install -y fuse libfuse2 curl
+          apt-get install -y fuse libfuse2 curl unzip
 
       - name: checkout repo
         uses: actions/checkout@v3
