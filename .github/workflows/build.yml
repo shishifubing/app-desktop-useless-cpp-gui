@@ -13,7 +13,6 @@ on:
 env:
   QT_VERSION: "5.15.2"
   APPIMAGE_URL: https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
-  BUILD_WRAPPER_OUT_DIR: ${{ github.workspace }}/build_wrapper_output_directory
 
 jobs:
   linux:
@@ -26,6 +25,7 @@ jobs:
         run: |
           echo "SOURCE_DIR=${GITHUB_WORKSPACE}/GUI" >>"${GITHUB_ENV}"
           echo "BUILD_DIR=${GITHUB_WORKSPACE}/_build" >>"${GITHUB_ENV}"
+          echo "BUILD_WRAPPER_OUT_DIR=${GITHUB_WORKSPACE}/_wrapper_output" >>"${GITHUB_ENV}"
 
       - name: checkout repo
         uses: actions/checkout@v3
