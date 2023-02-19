@@ -22,8 +22,8 @@ jobs:
     steps:
       - name: install FUSE and curl
         run: |
-          apt-get update
-          apt-get install fuse libfuse2 curl
+          apt-get update -y
+          apt-get install -y fuse libfuse2 curl
 
       - name: checkout repo
         uses: actions/checkout@v3
