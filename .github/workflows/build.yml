@@ -6,8 +6,6 @@ on:
       - "main"
     tags:
       - "v*"
-    paths:
-      - "GUI/**"
   pull_request:
 
 env:
