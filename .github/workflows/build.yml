@@ -31,6 +31,9 @@ jobs:
           # Shallow clones should be disabled for a better relevancy of analysis
           fetch-depth: 0
 
+      - name: install sonar-scanner and build-wrapper
+        uses: SonarSource/sonarcloud-github-c-cpp@v1
+
       - name: install Qt
         uses: jurplel/install-qt-action@v3
         with:
@@ -45,11 +48,20 @@ jobs:
 
       - name: build
         working-directory: ${{ env.SOURCE_DIR }}/build
+        # 'make' is the actual build command
+        # build-wrapper is there for Sonarqube analysis
         run: |
           qmake -r ${{ env.SOURCE_DIR }}/GUI.pro
-          make
+          build-wrapper-linux-x86-64 --out-dir . make
 
-      - name: create AppImage
+      - name: run sonar-scanner
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          sonar-scanner --define sonar.cfamily.build-wrapper-output=.
+
+      - name: create an AppImage
         working-directory: ${{ env.SOURCE_DIR }}/build
         run: |
           wget -O deploy.AppImage ${{ env.APPIMAGE_URL }}
@@ -66,7 +78,7 @@ jobs:
             -extra-plugins=renderers
           rm ./deploy.AppImage
 
-      - name: upload AppImage
+      - name: upload the AppImage
         uses: actions/upload-artifact@v3
         with:
           path: ${{ env.SOURCE_DIR }}/build/*.AppImage
