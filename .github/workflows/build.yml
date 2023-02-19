@@ -36,6 +36,7 @@ jobs:
         run: |
           build_dir="${GITHUB_WORKSPACE}/_build"
           mkdir -p "${build_dir}"
+          git branch
 
           echo "SOURCE_DIR=${GITHUB_WORKSPACE}/GUI" >>"${GITHUB_ENV}"
           echo "BUILD_DIR=${build_dir}" >>"${GITHUB_ENV}"
