@@ -45,7 +45,7 @@ jobs:
           setup-python: false
 
       - name: create build directory
-        run: mkdir "${{ BUILD_DIR }}"
+        run: mkdir "${{ env.BUILD_DIR }}"
 
       - name: build
         working-directory: ${{ env.BUILD_DIR }}
