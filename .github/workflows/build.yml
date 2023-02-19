@@ -28,7 +28,7 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v3
         with:
-          # Shallow clones should be disabled for a better relevancy of analysis
+          # shallow clones should be disabled for better relevancy of analysis
           fetch-depth: 0
 
       - name: install sonar-scanner and build-wrapper
