@@ -7,6 +7,8 @@ on:
     tags:
       - "v*"
   pull_request:
+  # allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 env:
   SOURCE_DIR: ${{ github.workspace }}/GUI
