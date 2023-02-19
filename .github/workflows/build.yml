@@ -18,7 +18,8 @@ jobs:
   linux:
     runs-on: ubuntu-latest
     container:
-      image: python:3.10-buster
+      image: ubuntu:18.04
+      # for appimage build - https://github.com/s3fs-fuse/s3fs-fuse/issues/647#issuecomment-330398877
       options: --privileged
 
     steps:
@@ -78,7 +79,7 @@ jobs:
         run: |
           wget -O deploy.AppImage ${{ env.APPIMAGE_URL }}
           chmod +x deploy.AppImage
-          ld_path="${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/gcc_64/lib/"
+          ld_path="${GITHUB_WORKSPACE}/Qt/${{ env.QT_VERSION }}/gcc_64/lib/"
           export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${ld_path}"
           cp "${{ env.SOURCE_DIR }}/GUI.desktop" \
             "${{ env.SOURCE_DIR }}/GUI.png"      \
