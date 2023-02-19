@@ -23,7 +23,7 @@ jobs:
       - name: install packages
         run: |
           apt-get update -y
-          apt-get upgrade -y fuse libfuse2 curl unzip sudo libc6
+          apt-get install -y fuse libfuse2 curl unzip sudo libc6
 
       - name: checkout repo
         uses: actions/checkout@v3
