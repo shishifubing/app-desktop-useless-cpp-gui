@@ -16,11 +16,11 @@ env:
 
 jobs:
   linux:
-    runs-on: ubuntu-20.04
-    container: ubuntu:18.04
+    runs-on: ubuntu-latest
+    container: python:3.10-bullseye
 
     steps:
-      - name: install FUSE and curl
+      - name: install packages
         run: |
           apt-get update -y
           apt-get upgrade -y fuse libfuse2 curl unzip sudo libc6
