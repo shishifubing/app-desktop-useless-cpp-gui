@@ -49,6 +49,8 @@ jobs:
             fuse libfuse2 curl unzip sudo libc6 python3 python3-pip wget git
           pip3 install --upgrade pip
           pip3 install setuptools
+          echo "${PWD}"
+          ls
           git branch
 
       - name: install sonar-scanner and build-wrapper
