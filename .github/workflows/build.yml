@@ -18,6 +18,7 @@ jobs:
   linux:
     runs-on: ubuntu-latest
     container:
+      # old image is used because of https://github.com/probonopd/linuxdeployqt/issues/340
       image: ubuntu:18.04
       # for appimage build - https://github.com/s3fs-fuse/s3fs-fuse/issues/647#issuecomment-330398877
       options: --privileged
@@ -77,13 +78,17 @@ jobs:
           sonar-scanner                                                                    \
             --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}"
 
-      - name: create an AppImage
+      - name: set LD_LIBRARY_PATH
+        run: |
+          ld_path="${GITHUB_WORKSPACE}/Qt/${{ env.QT_VERSION }}/gcc_64/lib"
+          ls "${ld_path}"
+          echo LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${ld_path}" >>"${GITHUB_ENV}"
+
+      - name: package as an AppImage
         working-directory: ${{ env.BUILD_DIR }}
         run: |
-          wget -O deploy.AppImage ${{ env.APPIMAGE_URL }}
+          wget --no-verbose -O deploy.AppImage ${{ env.APPIMAGE_URL }}
           chmod +x deploy.AppImage
-          ld_path="${GITHUB_WORKSPACE}/Qt/${{ env.QT_VERSION }}/gcc_64/lib/"
-          export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${ld_path}"
           cp "${{ env.SOURCE_DIR }}/GUI.desktop" \
             "${{ env.SOURCE_DIR }}/GUI.png"      \
             ./
