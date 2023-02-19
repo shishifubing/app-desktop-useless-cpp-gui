@@ -12,7 +12,7 @@ on:
 
 env:
   SOURCE_DIR: ${{ github.workspace }}/GUI
-  QT_VERSION: 5.15.2
+  QT_VERSION: "5.15.2"
   APPIMAGE_URL: https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
   BUILD_WRAPPER_OUT_DIR: ${{ github.workspace }}/build_wrapper_output_directory
 
@@ -70,7 +70,7 @@ jobs:
         run: |
           wget -O deploy.AppImage ${{ env.APPIMAGE_URL }}
           chmod +x deploy.AppImage
-          ld_path="${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/gcc_64/lib/"
+          ld_path="${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/gcc_64/lib"
           export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${ld_path}"
           cp "${{ env.SOURCE_DIR }}/GUI.desktop" \
             "${{ env.SOURCE_DIR }}/GUI.png"      \
@@ -78,8 +78,7 @@ jobs:
           ./deploy.AppImage GUI.desktop         \
             -appimage                           \
             -no-translations                    \
-            -qmldir="${{ env.SOURCE_DIR }}"     \
-            -extra-plugins=renderers
+            -qmldir="${{ env.SOURCE_DIR }}"
           rm ./deploy.AppImage
 
       - name: upload the AppImage
