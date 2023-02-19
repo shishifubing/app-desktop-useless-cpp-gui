@@ -17,6 +17,7 @@ env:
 jobs:
   linux:
     runs-on: ubuntu-20.04
+    container: ubuntu:18.04
 
     steps:
       - name: setup FUSE
