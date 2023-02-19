@@ -53,11 +53,16 @@ jobs:
           build_dir="${GITHUB_WORKSPACE}/_build"
           mkdir -p "${build_dir}"
 
-          echo "SOURCE_DIR=${GITHUB_WORKSPACE}/GUI" >>"${GITHUB_ENV}"
-          echo "BUILD_DIR=${build_dir}" >>"${GITHUB_ENV}"
-          echo "BUILD_WRAPPER_OUT_DIR=${GITHUB_WORKSPACE}/_sonar" >>"${GITHUB_ENV}"
-          echo "QT_DIR=${GITHUB_WORKSPACE}/_qt" >>"${GITHUB_ENV}"
-          echo "ARTIFACT_PATH=${GITHUB_WORKSPACE}/${{ env.PROJECT_NAME }}" >>"${GITHUB_ENV}"
+          echo "SOURCE_DIR=${GITHUB_WORKSPACE}/GUI" \
+            >>"${GITHUB_ENV}"
+          echo "BUILD_DIR=${build_dir}" \
+            >>"${GITHUB_ENV}"
+          echo "BUILD_WRAPPER_OUT_DIR=${GITHUB_WORKSPACE}/_sonar" \
+            >>"${GITHUB_ENV}"
+          echo "QT_DIR=${GITHUB_WORKSPACE}/_qt" \
+            >>"${GITHUB_ENV}"
+          echo "ARTIFACT_PATH=${GITHUB_WORKSPACE}/${{ env.PROJECT_NAME }}.AppImage" \
+            >>"${GITHUB_ENV}"
 
       - name: install sonar-scanner and build-wrapper
         uses: SonarSource/sonarcloud-github-c-cpp@v1
@@ -106,9 +111,9 @@ jobs:
           ./deploy.AppImage GUI.desktop         \
             -appimage                           \
             -no-translations                    \
-            -qmldir="${{ env.SOURCE_DIR }}"ARTIFACT_PATH
+            -qmldir="${{ env.SOURCE_DIR }}"
 
-          echo ARTIFACT_PATH=*.AppImage >>"${GITHUB_ENV}"
+          mv *.AppImage "${{ env.ARTIFACT_PATH }}"
 
       - name: upload the AppImage
         uses: actions/upload-artifact@v3
