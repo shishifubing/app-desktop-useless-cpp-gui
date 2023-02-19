@@ -21,16 +21,16 @@ jobs:
     container: python:3.10-bullseye
 
     steps:
-      - name: install packages
-        run: |
-          apt-get update -y
-          apt-get install -y fuse libfuse2 curl unzip sudo libc6
-
       - name: checkout repo
         uses: actions/checkout@v3
         with:
           # shallow clones should be disabled for better relevancy of analysis
           fetch-depth: 0
+
+      - name: install packages
+        run: |
+          apt-get update -y
+          apt-get install -y fuse libfuse2 curl unzip sudo libc6
 
       - name: install sonar-scanner and build-wrapper
         uses: SonarSource/sonarcloud-github-c-cpp@v1
@@ -45,7 +45,10 @@ jobs:
           setup-python: false
 
       - name: create build directory
-        run: mkdir "${{ env.BUILD_DIR }}"
+        run: |
+          echo "${PWD}"
+          ls
+          mkdir "${{ env.BUILD_DIR }}"
 
       - name: build
         working-directory: ${{ env.BUILD_DIR }}
