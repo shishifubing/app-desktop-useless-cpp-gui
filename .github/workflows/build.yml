@@ -20,6 +20,11 @@ jobs:
     container: ubuntu:18.04
 
     steps:
+      - name: install FUSE and curl
+        run: |
+          apt-get update
+          apt-get install fuse libfuse2 curl
+
       - name: checkout repo
         uses: actions/checkout@v3
         with:
