@@ -27,6 +27,9 @@ jobs:
 
       - name: checkout repo
         uses: actions/checkout@v3
+        with:
+          # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0
 
       - name: install Qt
         uses: jurplel/install-qt-action@v3
