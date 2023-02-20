@@ -26,7 +26,7 @@ Desktop GUI
 
 </div>
 
-# About The Project
+## About The Project
 
 Years ago (2020) I decided to make an app.
 For some reason, I decided to use C++ and Qt5.
@@ -35,7 +35,7 @@ Later when I started implementing logic, I
 realized C++ is not suitable for that particular app, 
 so I abandoned it.
 
-## Features
+### Features
 
 - Useless
 - Basic C++, Qt5
@@ -43,7 +43,7 @@ so I abandoned it.
 - Packaged as an AppImage
 - Scanned by Sonarqube 
 
-## Demo
+### Demo
 
 > **Note** WebM is broken on Edge, try another browser
 
