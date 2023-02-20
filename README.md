@@ -1,4 +1,4 @@
-<div align="center">
+<div align="center" markdown="1">
 
 # [`app-desktop-useless-cpp-gui`][url-repo]
 
@@ -8,11 +8,20 @@
 
 [![Appimage][shield-appimage]][url-release-latest]
 
-Desktop GUI written using C++ and Qt
+Desktop GUI
 
 </div>
 
-## Sonarqube
+# About The Project
+
+Years ago (2020) I decided to make an app.
+For some reason, I decided to use C++ and Qt5.
+For some reason, I decided to make a GUI first.
+Later when I started implementing logic, I 
+realized C++ is not suitable for that particular app, 
+so I abandoned it.
+
+## Badges
 
 [![Bugs][url-sonar-bugs]][url-sonar]
 [![Code Smells][url-sonar-code_smells]][url-sonar]
@@ -28,10 +37,11 @@ Desktop GUI written using C++ and Qt
 
 ## Features
 
-- Absolutely useless
+- Useless
+- Basic C++, Qt5
 - Has CI
 - Packaged as an AppImage
-- Scanned by sonarqube 
+- Scanned by Sonarqube 
 
 ## Demo
 
