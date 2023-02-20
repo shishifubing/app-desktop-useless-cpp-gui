@@ -6,6 +6,20 @@
 [![Build][shield-workflow-build]][url-workflow-build]
 [![Status][shield-status-abandoned]][url-repo]
 
+
+[![Bugs][url-sonar-bugs]][url-sonar]
+[![Code Smells][url-sonar-code_smells]][url-sonar]
+[![Coverage][url-sonar-coverage]][url-sonar]
+[![Duplicated Lines (%)][url-sonar-duplicated_lines_density]][url-sonar]
+[![Lines of Code][url-sonar-ncloc]][url-sonar]
+[![Maintainability Rating][url-sonar-sqale_rating]][url-sonar]
+[![Quality Gate Status][url-sonar-alert_status]][url-sonar]
+[![Reliability Rating][url-sonar-reliability_rating]][url-sonar]
+[![Security Rating][url-sonar-security_rating]][url-sonar]
+[![Technical Debt][url-sonar-sqale_index]][url-sonar]
+[![Vulnerabilities][url-sonar-vulnerabilities]][url-sonar]
+
+
 [![Appimage][shield-appimage]][url-release-latest]
 
 Desktop GUI
@@ -20,20 +34,6 @@ For some reason, I decided to make a GUI first.
 Later when I started implementing logic, I 
 realized C++ is not suitable for that particular app, 
 so I abandoned it.
-
-## Badges
-
-[![Bugs][url-sonar-bugs]][url-sonar]
-[![Code Smells][url-sonar-code_smells]][url-sonar]
-[![Coverage][url-sonar-coverage]][url-sonar]
-[![Duplicated Lines (%)][url-sonar-duplicated_lines_density]][url-sonar]
-[![Lines of Code][url-sonar-ncloc]][url-sonar]
-[![Maintainability Rating][url-sonar-sqale_rating]][url-sonar]
-[![Quality Gate Status][url-sonar-alert_status]][url-sonar]
-[![Reliability Rating][url-sonar-reliability_rating]][url-sonar]
-[![Security Rating][url-sonar-security_rating]][url-sonar]
-[![Technical Debt][url-sonar-sqale_index]][url-sonar]
-[![Vulnerabilities][url-sonar-vulnerabilities]][url-sonar]
 
 ## Features
 
