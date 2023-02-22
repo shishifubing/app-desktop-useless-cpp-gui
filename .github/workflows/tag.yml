@@ -34,7 +34,10 @@ jobs:
         run: |
           tag="v${{ steps.gitversion.outputs.semVer }}"
           commits="${{ steps.gitversions.outputs.commitsSinceVersionSource }}"
-          message=$(git log -n "${commits}" --pretty='format:- %s%n  %b%n%n  %H')
+          format_commit='format:- %s%n  %b%n%n  %H'
+          format_merge='format:# %s%n%b'
+          merge_commit=$(git log -n 1 --pretty="${format_merge}")
+          message=$(git log -n "${commits}" --skip=1 --pretty="${format_commit}")
 
           git tag -a "${tag}" -m "${message}"
           git push origin "${tag}"
