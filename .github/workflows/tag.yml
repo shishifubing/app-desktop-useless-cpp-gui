@@ -32,5 +32,5 @@ jobs:
       - name: Tag
         run: |
           tag="v${{ steps.gitversion.outputs.semVer }}"
-          git tag "${tag}"
+          git tag -a "${tag}" -m ""
           git push origin "${tag}"
