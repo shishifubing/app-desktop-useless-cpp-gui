@@ -6,6 +6,9 @@ on:
     branches:
       - main
 
+env:
+  BUILD_NUMBER: ${{ github.run_number }}
+
 jobs:
   tag:
     name: Create a tag after PR
