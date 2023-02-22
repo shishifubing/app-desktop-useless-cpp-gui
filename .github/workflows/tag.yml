@@ -1,6 +1,7 @@
 name: Tag
 
 on:
+  pull_request:
   push:
     branches:
       - main
@@ -9,12 +10,16 @@ jobs:
   tag:
     name: Create a tag after PR
     runs-on: ubuntu-latest
-    container: gittools/gitversion:5.12.0-alpine.3.13-6.0
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
         with: { fetch-depth: 0 }
+
+      - name: Download gitversion
+        uses: gittools/actions/gitversion/setup@v0.9.15
+        with:
+          versionSpec: 5.x
 
       - name: Determine version
         id: gitversion
