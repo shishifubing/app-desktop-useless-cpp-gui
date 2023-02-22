@@ -1,0 +1,27 @@
+name: Tag
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tag:
+    name: Create a tag after PR
+    runs-on: ubuntu-latest
+    container: gittools/gitversion:5.12.0-alpine.3.13-6.0
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with: { fetch-depth: 0 }
+
+      - name: Determine version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v0.9.15
+
+      - name: Tag
+        run: |
+          tag="v${{ steps.gitversion.outputs.semVer }}"
+          git tag "${tag}"
+          git push origin "${tag}"
