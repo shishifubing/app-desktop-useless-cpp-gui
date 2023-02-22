@@ -1,6 +1,7 @@
 name: Tag
 
 on:
+  pull_request:
   push:
     branches:
       - main
@@ -32,5 +33,8 @@ jobs:
       - name: Tag
         run: |
           tag="v${{ steps.gitversion.outputs.semVer }}"
-          git tag -a "${tag}" -m ""
+          commits="${{ steps.gitversions.outputs.commitsSinceVersionSource }}"
+          message=$(git log -n "${commits}" --pretty='format:- %s%n  %b%n%n  %H')
+
+          git tag -a "${tag}" -m "${message}"
           git push origin "${tag}"
