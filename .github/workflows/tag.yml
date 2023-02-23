@@ -7,6 +7,7 @@ on:
 
 env:
   BUILD_NUMBER: ${{ github.run_number }}
+  BUILD_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
 jobs:
   tag:
@@ -54,7 +55,7 @@ jobs:
           message=$(git log -n "${commits}" --skip=1 --pretty="${format_commit}")
 
           # create the tag
-          git tag -s -a "${tag}" -m "${message}"
+          git tag -s -a "${tag}" -m "${message}\n${{ env.BUILD_URL}}"
           # verify the tag
           git tag -v "${tag}"
           # push the tag
