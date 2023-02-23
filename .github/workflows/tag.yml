@@ -13,7 +13,6 @@ jobs:
   tag:
     name: Create a tag after PR
     runs-on: ubuntu-latest
-    container: gittools/gitversion:5.12.0-alpine.3.13-6.0
 
     steps:
       - name: Checkout repo
@@ -21,6 +20,15 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.CI_GITHUB_TOKEN }}
+
+      - name: Download gitversion
+        uses: gittools/actions/gitversion/setup@v0.9.15
+        with:
+          versionSpec: 5.x
+
+      - name: Determine version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v0.9.15
 
       - name: Import bot's GPG key
         id: import_gpg
