@@ -50,10 +50,9 @@ jobs:
         run: |
           tag="v${{ steps.gitversion.outputs.semVer }}"
           commits="$(( 1 + ${GITVERSION_COMMITSSINCEVERSIONSOURCE} ))"
-          message_commits=$(
-            git log -n "${commits}" --skip=1 --pretty='format:  - %H %s'
-          )
-          message_build="Build url: ${{ env.BUILD_URL }}"
+          commits=$(git log -n "${commits}" --skip=1 --pretty='format:  - %H %s')
+          commit_source=$(echo "${commits}" | tail -n 1)
+          commits_without_source=$( echo "${commits}" | sed '$d')
 
           # create the tag
           git tag                                       \
@@ -61,9 +60,10 @@ jobs:
             -a "${tag}"                                 \
             -m "${{ steps.gitversion.outputs.semVer }}" \
             -m "‎"                               \
+            -m "Source: ${commit_source}"               \
             -m "Commits:"                               \
-            -m "${message_commits}"                     \
-            -m "${message_build}"
+            -m "${commits_without_source}"              \
+            -m "Build url: ${{ env.BUILD_URL }}"
           # verify the tag
           git tag -v "${tag}"
           # push the tag
