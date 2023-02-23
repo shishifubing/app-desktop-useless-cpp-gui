@@ -49,10 +49,8 @@ jobs:
           GIT_COMMITTER_EMAIL: ${{ steps.import_gpg.outputs.email }}
         run: |
           tag="v${{ steps.gitversion.outputs.semVer }}"
-          commits="$(( 1 + ${GITVERSION_COMMITSSINCEVERSIONSOURCE} ))"
+          commits="${GITVERSION_COMMITSSINCEVERSIONSOURCE}"
           commits=$(git log -n "${commits}" --skip=1 --pretty='format:  - %H %s')
-          commit_source=$(echo "${commits}" | tail -n 1)
-          commits_without_source=$( echo "${commits}" | sed '$d')
 
           # create the tag
           git tag                                       \
@@ -60,9 +58,8 @@ jobs:
             -a "${tag}"                                 \
             -m "${{ steps.gitversion.outputs.semVer }}" \
             -m "‎"                               \
-            -m "Source: ${commit_source}"               \
             -m "Commits:"                               \
-            -m "${commits_without_source}"              \
+            -m "${commits}"              \
             -m "Build url: ${{ env.BUILD_URL }}"
           # verify the tag
           git tag -v "${tag}"
