@@ -50,11 +50,8 @@ jobs:
         run: |
           tag="v${{ steps.gitversion.outputs.semVer }}"
           commits="${GITVERSION_COMMITSSINCEVERSIONSOURCE}"
-          message_merge_commit=$(
-            git log -n 1 --skip 1 --pretty='format:%s%n%b'
-          )
           message_commits=$(
-            git log -n "${commits}" --skip=2 --pretty='format:  - %H %s'
+            git log -n "${commits}" --pretty='format:  - %H %s'
           )
           message_build="Build url: ${{ env.BUILD_URL }}"
 
@@ -63,8 +60,6 @@ jobs:
             -s                                          \
             -a "${tag}"                                 \
             -m "${{ steps.gitversion.outputs.semVer }}" \
-            -m "‎"                               \
-            -m "${message_merge_commit}"                \
             -m "Commits:"                               \
             -m "${message_commits}"                     \
             -m "${message_build}"
