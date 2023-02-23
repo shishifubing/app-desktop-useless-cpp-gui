@@ -60,6 +60,7 @@ jobs:
             -s                                          \
             -a "${tag}"                                 \
             -m "${{ steps.gitversion.outputs.semVer }}" \
+            -m "‎"                               \
             -m "Commits:"                               \
             -m "${message_commits}"                     \
             -m "${message_build}"
