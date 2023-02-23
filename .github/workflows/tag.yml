@@ -54,5 +54,9 @@ jobs:
           merge_commit=$(git log -n 1 --pretty="${format_merge}")
           message=$(git log -n "${commits}" --skip=1 --pretty="${format_commit}")
 
-          git tag -a "${tag}" -m "${message}"
+          # create the tag
+          git tag -s -a "${tag}" -m "${message}"
+          # verify the tag
+          git tag -v "${tag}"
+          # push the tag
           git push origin "${tag}"
