@@ -52,7 +52,7 @@ jobs:
           commits="${GITVERSION_COMMITSSINCEVERSIONSOURCE}"
           echo "CommitsSinceVersionSource: ${commits}"
           format_commit='format:  - %s%n  %b%n%n  %H'
-          format_source='format:Version source: %s%n%b'
+          format_source='format:%s%n%b'
           message_merge_commit=$(git log -n 1 --pretty="${format_source}")
           message_commits=$(git log -n "${commits}" --skip=1 --pretty="${format_commit}")
           message_build="Build url: ${{ env.BUILD_URL }}"
@@ -62,8 +62,9 @@ jobs:
             -s                           \
             -a "${tag}"                  \
             -m "${tag}"                  \
-            -m "Commits:"                \
+            -m ""                        \
             -m "${message_merge_commit}" \
+            -m "Commits:"                \
             -m "${message_commits}"      \
             -m "${message_build}"
           # verify the tag
