@@ -49,7 +49,7 @@ jobs:
           GIT_COMMITTER_EMAIL: ${{ steps.import_gpg.outputs.email }}
         run: |
           tag="v${{ steps.gitversion.outputs.semVer }}"
-          commits="${{ steps.gitversions.outputs.commitsSinceVersionSource }}"
+          commits="${GITVERSION_COMMITSSINCEVERSIONSOURCE}"
           echo "CommitsSinceVersionSource: ${commits}"
           format_commit='format:Commits:%n- %s%n  %b%n%n  %H'
           message_merge_commit=$(git log -n 1 --pretty='format:%s%n%b')
