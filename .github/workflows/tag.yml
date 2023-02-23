@@ -8,7 +8,7 @@ on:
 
 jobs:
   tag:
-    name: Create a tag
+    name: Call a workflow
     uses: shishifubing/ci-actions-common/.github/workflows/tag.yml@feature/add-tag-action
     secrets:
       ci_github_token: ${{ secrets.CI_GITHUB_TOKEN }}
