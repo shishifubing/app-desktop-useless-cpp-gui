@@ -47,7 +47,7 @@ jobs:
           GIT_COMMITTER_NAME: ${{ steps.import_gpg.outputs.name }}
           GIT_COMMITTER_EMAIL: ${{ steps.import_gpg.outputs.email }}
         run: |
-          tag="v$(gitversion -showvariable SemVer)"
+          tag="v${{ steps.gitversion.outputs.semVer }}"
           commits="${{ steps.gitversions.outputs.commitsSinceVersionSource }}"
           format_commit='format:- %s%n  %b%n%n  %H'
           format_merge='format:# %s%n%b'
