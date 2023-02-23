@@ -49,9 +49,9 @@ jobs:
           GIT_COMMITTER_EMAIL: ${{ steps.import_gpg.outputs.email }}
         run: |
           tag="v${{ steps.gitversion.outputs.semVer }}"
-          commits="${GITVERSION_COMMITSSINCEVERSIONSOURCE}"
+          commits="$(( 1 + ${GITVERSION_COMMITSSINCEVERSIONSOURCE} ))"
           message_commits=$(
-            git log -n "${commits}" --pretty='format:  - %H %s'
+            git log -n "${commits}" --skip=1 --pretty='format:  - %H %s'
           )
           message_build="Build url: ${{ env.BUILD_URL }}"
 
