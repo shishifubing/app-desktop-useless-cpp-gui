@@ -51,18 +51,21 @@ jobs:
           tag="v${{ steps.gitversion.outputs.semVer }}"
           commits="${GITVERSION_COMMITSSINCEVERSIONSOURCE}"
           echo "CommitsSinceVersionSource: ${commits}"
-          format_commit='format:Commits:%n- %s%n  %b%n%n  %H'
-          message_merge_commit=$(git log -n 1 --pretty='format:%s%n%b')
+          format_commit='format:  - %s%n  %b%n%n  %H'
+          format_source='format:Version source: %s%n%b'
+          message_merge_commit=$(git log -n 1 --pretty="${format_source}")
           message_commits=$(git log -n "${commits}" --skip=1 --pretty="${format_commit}")
+          message_build="Build url: ${{ env.BUILD_URL }}"
 
           # create the tag
           git tag                        \
             -s                           \
             -a "${tag}"                  \
             -m "${tag}"                  \
+            -m "Commits:"                \
             -m "${message_merge_commit}" \
             -m "${message_commits}"      \
-            -m "${{ env.BUILD_URL }}"
+            -m "${message_build}"
           # verify the tag
           git tag -v "${tag}"
           # push the tag
