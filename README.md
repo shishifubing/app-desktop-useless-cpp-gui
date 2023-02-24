@@ -2,16 +2,18 @@
 
 # [`app-desktop-useless-cpp-gui`][url-repo]
 
+Desktop GUI
+
+[![Get as an Appimage][badge-appimage]][url-release-latest]
+
 [![License][badge-license]][url-license]
 [![Status][badge-status-abandoned]][url-repo]
+[![Conventional Commits][badge-conventionalcommits]][url-conventionalcommits]
+[![Semver][badge-semver]][url-semver]
 
 [![Build][badge-workflow-build]][url-workflow-build]
 [![Coverage][badge-sonar-coverage]][url-sonar]
 [![Lines of Code][badge-sonar-ncloc]][url-sonar]
-
-[![Appimage][badge-appimage]][url-release-latest]
-
-Desktop GUI
 
 </div>
 
@@ -50,6 +52,9 @@ I abandoned it.
 
 <!-- external links -->
 
+[url-semver]: https://semver.org
+[url-conventionalcommits]: https://conventionalcommits.org
+
 <!-- sonar badge links -->
 
 [badge-sonar-vulnerabilities]: https://sonarcloud.io/api/project_badges/measure?project=shishifubing_app-desktop-useless-cpp-gui&metric=vulnerabilities
@@ -66,6 +71,8 @@ I abandoned it.
 
 <!-- other badge links -->
 
+[badge-semver]: https://img.shields.io/badge/semver-2.0.0-%233F4551?style=for-the-badge&logo=Semver&logoColor=white
+[badge-conventionalcommits]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white&style=for-the-badge
 [badge-status-abandoned]: https://img.shields.io/badge/status-abandoned-red?style=for-the-badge
 [badge-license]: https://img.shields.io/github/license/shishifubing/app-desktop-useless-cpp-gui.svg?style=for-the-badge
 [badge-appimage]: https://raw.githubusercontent.com/AppImage/docs.appimage.org/master/source/_static/img/download-appimage-banner.svg
