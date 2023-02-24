@@ -5,6 +5,12 @@ on:
     tags:
       - "v*"
   pull_request:
+    paths-ignore:
+      - README.md
+      - docs/**
+      - .github/**/*.md
+      - .github/FUNDING.yml
+      - .github/ISSUE_TEMPLATE/**
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
