@@ -69,4 +69,4 @@ I abandoned it.
 [badge-status-abandoned]: https://img.shields.io/badge/status-abandoned-red?style=for-the-badge
 [badge-license]: https://img.shields.io/github/license/shishifubing/app-desktop-useless-cpp-gui.svg?style=for-the-badge
 [badge-appimage]: https://raw.githubusercontent.com/AppImage/docs.appimage.org/master/source/_static/img/download-appimage-banner.svg
-[badge-workflow-build]: https://img.shields.io/github/actions/workflow/status/shishifubing/app-desktop-useless-cpp-gui/build.yml?label=build&branch=main
+[badge-workflow-build]: https://github.com/shishifubing/app-desktop-useless-cpp-gui/actions/workflows/build.yml/badge.svg
