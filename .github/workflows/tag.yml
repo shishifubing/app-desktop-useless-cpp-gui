@@ -2,6 +2,12 @@ name: Create a tag
 
 on:
   push:
+    paths-ignore:
+      - README.md
+      - docs/**
+      - .github/**/*.md
+      - .github/FUNDING.yml
+      - .github/ISSUE_TEMPLATE/**
     branches:
       - main
 
