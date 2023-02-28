@@ -59,7 +59,7 @@ jobs:
 
           {
             echo "SOURCE_DIR=${GITHUB_WORKSPACE}/GUI"
-            echo "BUILD_DIR=${build_dir}""
+            echo "BUILD_DIR=${build_dir}"
             echo "BUILD_WRAPPER_OUT_DIR=${GITHUB_WORKSPACE}/_sonar"
             echo "QT_DIR=${GITHUB_WORKSPACE}/_qt"
             path="${GITHUB_WORKSPACE}/${{ env.PROJECT_NAME }}.AppImage"
