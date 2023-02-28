@@ -57,12 +57,14 @@ jobs:
           build_dir="${GITHUB_WORKSPACE}/_build"
           mkdir -p "${build_dir}"
 
-          echo "SOURCE_DIR=${GITHUB_WORKSPACE}/GUI" >>"${GITHUB_ENV}"
-          echo "BUILD_DIR=${build_dir}" >>"${GITHUB_ENV}"
-          echo "BUILD_WRAPPER_OUT_DIR=${GITHUB_WORKSPACE}/_sonar" >>"${GITHUB_ENV}"
-          echo "QT_DIR=${GITHUB_WORKSPACE}/_qt" >>"${GITHUB_ENV}"
-          path="${GITHUB_WORKSPACE}/${{ env.PROJECT_NAME }}.AppImage"
-          echo "ARTIFACT_PATH=${path}" >>"${GITHUB_ENV}"
+          {
+            echo "SOURCE_DIR=${GITHUB_WORKSPACE}/GUI"
+            echo "BUILD_DIR=${build_dir}"
+            echo "BUILD_WRAPPER_OUT_DIR=${GITHUB_WORKSPACE}/_sonar"
+            echo "QT_DIR=${GITHUB_WORKSPACE}/_qt"
+            path="${GITHUB_WORKSPACE}/${{ env.PROJECT_NAME }}.AppImage"
+            echo "ARTIFACT_PATH=${path}"
+          } >>"${GITHUB_ENV}"
 
       - name: Install sonar-scanner and build-wrapper
         uses: SonarSource/sonarcloud-github-c-cpp@v1
