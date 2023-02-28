@@ -2,14 +2,17 @@
 
 # [`app-desktop-useless-cpp-gui`][url-repo]
 
+</br>
+
 Desktop GUI
+
+</br>
 
 [![Get as an Appimage][badge-appimage]][url-release-latest]
 
 [![License][badge-license]][url-license]
 [![Status][badge-status-abandoned]][url-repo]
 [![Conventional Commits][badge-conventionalcommits]][url-conventionalcommits]
-[![Semver][badge-semver]][url-semver]
 
 [![Build][badge-workflow-build]][url-workflow-build]
 [![Coverage][badge-sonar-coverage]][url-sonar]
@@ -19,7 +22,7 @@ Desktop GUI
 
 ## About The Project
 
-In 2020, I've decided to make an app. For some reason, I've decided to use C++
+In 2020 I've decided to make an app. For some reason, I've decided to use C++
 and Qt5. For some reason, I've decided to make a GUI first. Later when I started
 implementing logic, I realized C++ is not suitable for that particular app, so
 I abandoned it.
@@ -40,6 +43,19 @@ I abandoned it.
 
 [Screencast.webm](https://user-images.githubusercontent.com/97828377/218940781-ffbede8c-d3a1-497c-aabf-484bcea08b12.webm)
 
+### More badges
+
+[![Bugs][url-sonar-bugs]][url-sonar]
+[![Code Smells][url-sonar-code_smells]][url-sonar]
+[![Duplicated Lines (%)][url-sonar-duplicated_lines_density]][url-sonar]
+[![Maintainability Rating][url-sonar-sqale_rating]][url-sonar]
+[![Quality Gate Status][url-sonar-alert_status]][url-sonar]
+[![Reliability Rating][url-sonar-reliability_rating]][url-sonar]
+[![Security Rating][url-sonar-security_rating]][url-sonar]
+[![Technical Debt][url-sonar-sqale_index]][url-sonar]
+[![Vulnerabilities][url-sonar-vulnerabilities]][url-sonar]
+
+
 <!-- relative links -->
 
 <!-- project links -->
@@ -52,8 +68,21 @@ I abandoned it.
 
 <!-- external links -->
 
-[url-semver]: https://semver.org
 [url-conventionalcommits]: https://conventionalcommits.org
+
+<!-- sonar links -->
+
+[url-sonar-vulnerabilities]: https://sonarcloud.io/api/project_badges/measure?project=shishifubing_app-desktop-useless-cpp-gui&metric=vulnerabilities
+[url-sonar-sqale_index]: https://sonarcloud.io/api/project_badges/measure?project=shishifubing_app-desktop-useless-cpp-gui&metric=sqale_index
+[url-sonar-security_rating]: https://sonarcloud.io/api/project_badges/measure?project=shishifubing_app-desktop-useless-cpp-gui&metric=security_rating
+[url-sonar-reliability_rating]: https://sonarcloud.io/api/project_badges/measure?project=shishifubing_app-desktop-useless-cpp-gui&metric=reliability_rating
+[url-sonar-alert_status]: https://sonarcloud.io/api/project_badges/measure?project=shishifubing_app-desktop-useless-cpp-gui&metric=alert_status
+[url-sonar-sqale_rating]: https://sonarcloud.io/api/project_badges/measure?project=shishifubing_app-desktop-useless-cpp-gui&metric=sqale_rating
+[url-sonar-ncloc]: https://sonarcloud.io/api/project_badges/measure?project=shishifubing_app-desktop-useless-cpp-gui&metric=ncloc
+[url-sonar-duplicated_lines_density]: https://sonarcloud.io/api/project_badges/measure?project=shishifubing_app-desktop-useless-cpp-gui&metric=duplicated_lines_density
+[url-sonar-coverage]: https://sonarcloud.io/api/project_badges/measure?project=shishifubing_app-desktop-useless-cpp-gui&metric=coverage
+[url-sonar-code_smells]: https://sonarcloud.io/api/project_badges/measure?project=shishifubing_app-desktop-useless-cpp-gui&metric=code_smells
+[url-sonar-bugs]: https://sonarcloud.io/api/project_badges/measure?project=shishifubing_app-desktop-useless-cpp-gui&metric=bugs
 
 <!-- sonar badge links -->
 
@@ -71,7 +100,6 @@ I abandoned it.
 
 <!-- other badge links -->
 
-[badge-semver]: https://img.shields.io/badge/semver-2.0.0-%233F4551?style=for-the-badge&logo=Semver&logoColor=white
 [badge-conventionalcommits]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white&style=for-the-badge
 [badge-status-abandoned]: https://img.shields.io/badge/status-abandoned-red?style=for-the-badge
 [badge-license]: https://img.shields.io/github/license/shishifubing/app-desktop-useless-cpp-gui.svg?style=for-the-badge
