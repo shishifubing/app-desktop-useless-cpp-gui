@@ -3,3 +3,6 @@ repo:
 
 docs:
   - docs/**/*
+
+ci:
+  - .github/**/*
