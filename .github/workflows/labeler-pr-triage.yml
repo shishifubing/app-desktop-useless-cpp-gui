@@ -1,0 +1,44 @@
+name: labeler-pr-triage
+
+on:
+  - pull_request_target
+  - pull_request
+
+jobs:
+  type:
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/labeler@v4
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          sync-labels: true
+          configuration-path: .github/labeler-pr-triage.yml
+
+  size:
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+
+    steps:
+      # v1.8.1 https://github.com/CodelyTV/pr-size-labeler
+      - uses: CodelyTV/pr-size-labeler@54ef36785e9f4cb5ecf1949cfc9b00dbb621d761
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          xs_label: size/XS
+          xs_max_size: 30
+          s_label: size/S
+          s_max_size: 60
+          m_label: size/M
+          m_max_size: 150
+          l_label: size/L
+          l_max_size: 300
+          xl_label: size/XL
+          message_if_xl: >
+            This PR exceeds the recommended size of 1000 lines.
+            Please make sure you are NOT addressing multiple issues with one PR.
+            Note this PR might be rejected due to its size.
