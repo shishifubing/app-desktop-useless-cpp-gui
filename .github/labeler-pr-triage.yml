@@ -1,5 +1,5 @@
-needs-triage:
-  - "**/*"
+#needs-triage:
+#  - "**/*"
 
 repo:
   - "*"
