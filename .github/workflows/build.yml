@@ -18,6 +18,10 @@ env:
   APPIMAGE_URL: https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
   PROJECT_NAME: app-desktop-useless-cpp-gui
 
+concurrency:
+  cancel-in-progress: true
+  group: build-${{ github.head_ref || github.run_id }}
+
 jobs:
   linux:
     runs-on: ubuntu-latest
