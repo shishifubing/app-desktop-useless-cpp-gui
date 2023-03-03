@@ -11,7 +11,6 @@ on:
       - .github/**/*.md
       - .github/FUNDING.yml
       - .github/ISSUE_TEMPLATE/**
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 env:

@@ -1,13 +1,10 @@
 name: labeler-issue-triage
+
 on:
   issues:
     types: [opened, edited]
 
 jobs:
-  label:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: github/issue-labeler@v3
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          configuration-path: .github/labeler-issue-triage.yml
+  call:
+    uses: shishifubing/ci-actions-common/.github/workflows/labeler-issue-triage.yml@main
+    secrets: inherit
