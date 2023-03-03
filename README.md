@@ -8,7 +8,6 @@ Desktop GUI
 
 [![License][badge-license]][url-license]
 [![Status][badge-status-abandoned]][url-repo]
-[![Conventional Commits][badge-conventionalcommits]][url-conventionalcommits]
 
 [![Build][badge-workflow-build]][url-workflow-build]
 [![Coverage][badge-sonar-coverage]][url-sonar]
@@ -27,12 +26,11 @@ I abandoned it.
 
 - Useless
 - Basic C++, Qt5
-- Has CI
 - Packaged as an AppImage
-- Scanned by Sonarqube
 
-### More badges
+### Badges
 
+[![Conventional Commits][badge-conventionalcommits]][url-conventionalcommits]
 [![Bugs][badge-sonar-bugs]][url-sonar]
 [![Code Smells][badge-sonar-code_smells]][url-sonar]
 [![Duplicated Lines (%)][badge-sonar-duplicated_lines_density]][url-sonar]
@@ -81,7 +79,7 @@ I abandoned it.
 
 <!-- other badge links -->
 
-[badge-conventionalcommits]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white&style=for-the-badge
+[badge-conventionalcommits]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white
 [badge-status-abandoned]: https://img.shields.io/badge/status-abandoned-red?style=for-the-badge
 [badge-license]: https://img.shields.io/github/license/shishifubing/app-desktop-useless-cpp-gui.svg?style=for-the-badge
 [badge-appimage]: https://raw.githubusercontent.com/AppImage/docs.appimage.org/master/source/_static/img/download-appimage-banner.svg
