@@ -11,13 +11,16 @@ on:
       - .github/**/*.md
       - .github/FUNDING.yml
       - .github/ISSUE_TEMPLATE/**
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 env:
   QT_VERSION: "5.15.2"
   APPIMAGE_URL: https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
   PROJECT_NAME: app-desktop-useless-cpp-gui
+
+concurrency:
+  cancel-in-progress: true
+  group: build-${{ github.head_ref || github.run_id }}
 
 jobs:
   linux:
