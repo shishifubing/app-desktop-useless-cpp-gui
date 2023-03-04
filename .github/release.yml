@@ -3,6 +3,8 @@ changelog:
     labels:
       - dependencies
       - chore
+      - ci
+      - github-actions
     authors:
       - dependabot
 
