@@ -1,3 +1,6 @@
+# Config for https://github.com/actions/labeler
+# Required workflow - https://github.com/shishifubing/ci-actions-common/blob/main/.github/workflows/labeler-pr-triage.yml
+
 #needs-triage:
 #  - "**/*"
 
@@ -10,6 +13,24 @@ documentation:
 
 github-actions:
   - .github/**/*
+
+gh-tag:
+  - .github/**/tag*
+
+gh-labeler:
+  - .github/**/labeler*
+
+gh-release:
+  - .github/**/release*
+  
+gh-build:
+  - .github/**/build*
+  
+gh-ci:
+  - .github/**/ci*
+
+gh-cd:
+  - .github/**/cd*
 
 dependencies:
   - .github/dependabot.yml
