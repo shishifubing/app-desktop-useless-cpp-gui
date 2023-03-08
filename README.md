@@ -16,14 +16,13 @@ Desktop GUI
 
 ## About The Project
 
-In 2020 I've decided to make an app. For some reason, I've decided to use C++
-and Qt5 and to make a GUI first. Later when I started
-implementing logic, I realized C++ is not suitable for that particular app, so
-I abandoned it.
+In 2020 I've decided to make an app. For some reason, 
+I've decided to use C++ and Qt5 and to make a GUI first. 
+Later when I started implementing logic, I realized C++ 
+is not suitable for that particular app, so I abandoned it.
 
 ### Features
 
-- Useless
 - Basic C++, Qt5
 - Packaged as an AppImage
 
