@@ -2,16 +2,15 @@
 
 # [`app-desktop-useless-cpp-gui`][url-repo]
 
-Desktop GUI
-
-[![Get as an Appimage][badge-appimage]][url-release-latest]
-
 [![License][badge-license]][url-license]
 [![Status][badge-status-abandoned]][url-repo]
-
 [![Build][badge-workflow-build]][url-workflow-build]
 [![Coverage][badge-sonar-coverage]][url-sonar]
 [![Lines of Code][badge-sonar-ncloc]][url-sonar]
+
+[![Get as an Appimage][badge-appimage]][url-release-latest]
+
+Desktop GUI
 
 </div>
 
@@ -27,19 +26,6 @@ I abandoned it.
 - Useless
 - Basic C++, Qt5
 - Packaged as an AppImage
-
-### Badges
-
-[![Conventional Commits][badge-conventionalcommits]][url-conventionalcommits]
-[![Bugs][badge-sonar-bugs]][url-sonar]
-[![Code Smells][badge-sonar-code_smells]][url-sonar]
-[![Duplicated Lines (%)][badge-sonar-duplicated_lines_density]][url-sonar]
-[![Maintainability Rating][badge-sonar-sqale_rating]][url-sonar]
-[![Quality Gate Status][badge-sonar-alert_status]][url-sonar]
-[![Reliability Rating][badge-sonar-reliability_rating]][url-sonar]
-[![Security Rating][badge-sonar-security_rating]][url-sonar]
-[![Technical Debt][badge-sonar-sqale_index]][url-sonar]
-[![Vulnerabilities][badge-sonar-vulnerabilities]][url-sonar]
 
 ### Demo
 
@@ -80,7 +66,7 @@ I abandoned it.
 <!-- other badge links -->
 
 [badge-conventionalcommits]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white
-[badge-status-abandoned]: https://img.shields.io/badge/status-abandoned-red?style=for-the-badge
-[badge-license]: https://img.shields.io/github/license/shishifubing/app-desktop-useless-cpp-gui.svg?style=for-the-badge
+[badge-status-abandoned]: https://img.shields.io/badge/status-abandoned-red
+[badge-license]: https://img.shields.io/github/license/shishifubing/app-desktop-useless-cpp-gui.svg
 [badge-appimage]: https://raw.githubusercontent.com/AppImage/docs.appimage.org/master/source/_static/img/download-appimage-banner.svg
 [badge-workflow-build]: https://github.com/shishifubing/app-desktop-useless-cpp-gui/actions/workflows/build.yml/badge.svg
