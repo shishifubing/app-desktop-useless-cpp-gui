@@ -5,7 +5,6 @@ on:
     # daily at 23:00 UTC
     - cron: 0 23 * * *
   workflow_dispatch:
-  pull_request:
 
 jobs:
   build:
@@ -34,10 +33,9 @@ jobs:
         if: steps.info.outputs.create == 'true'
         with:
           # events triggered by GitHub Actions don't trigger GitHub Actions, so
-          # you need to pass custom token to trigger changelog workflow
+          # you need to pass a custom token to trigger changelog workflow
           token: ${{ secrets.CI_GITHUB_TOKEN }}
           tag_name: ${{ steps.info.outputs.version }}
           name: ${{ steps.info.outputs.name }}
           body: ${{ steps.info.outputs.body }}
           files: _release/**/*
-          draft: true
