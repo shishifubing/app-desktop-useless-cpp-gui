@@ -1,0 +1,30 @@
+name: release
+
+on:
+  schedule:
+    # daily at 23:00 UTC
+    - cron: 0 23 * * *
+  workflow_dispatch:
+
+jobs:
+  release:
+    name: Publish a release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get release info
+        id: info
+        uses: shishifubing/ci-actions-common/actions/release-info@f863ce302be8dd9b0a5a4245b50858b07b4066bf # v0.6.1
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Create a release
+        uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844 # v0.1.15
+        if: steps.info.outputs.create == 'true'
+        with:
+          # events triggered by GitHub Actions don't trigger GitHub Actions, so
+          # you need to pass custom token to trigger changelog workflow
+          token: ${{ secrets.CI_GITHUB_TOKEN }}
+          tag_name: ${{ steps.info.outputs.version }}
+          name: ${{ steps.info.outputs.name }}
+          body: ${{ steps.info.outputs.body }}
