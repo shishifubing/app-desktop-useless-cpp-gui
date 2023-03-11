@@ -2,12 +2,9 @@ name: build
 
 on:
   pull_request:
-    paths-ignore:
-      - README.md
-      - docs/**
-      - .github/**/*.md
-      - .github/FUNDING.yml
-      - .github/ISSUE_TEMPLATE/**
+    paths:
+      - GUI
+      - .github/**/*
   workflow_dispatch:
   workflow_call:
 
