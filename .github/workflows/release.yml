@@ -12,7 +12,7 @@ jobs:
     secrets: inherit
 
   release:
-    uses: shishifubing/ci-actions-common/.github/workflows/release.yml@f717268ef935593ab358c347b9418261a434c1fb # v0.6.9
+    uses: shishifubing/ci-actions-common/.github/workflows/release.yml@main
     needs: build
     secrets: inherit
     with: 
