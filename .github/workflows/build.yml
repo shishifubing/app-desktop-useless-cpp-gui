@@ -1,9 +1,6 @@
 name: build
 
 on:
-  push:
-    tags:
-      - "v*"
   pull_request:
     paths-ignore:
       - README.md
@@ -12,6 +9,7 @@ on:
       - .github/FUNDING.yml
       - .github/ISSUE_TEMPLATE/**
   workflow_dispatch:
+  workflow_call:
 
 env:
   QT_VERSION: "5.15.2"
@@ -48,7 +46,7 @@ jobs:
           pip3 install setuptools
 
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
         with:
           # shallow clones should be disabled for better relevancy of analysis
           fetch-depth: 0
@@ -70,10 +68,10 @@ jobs:
           } >>"${GITHUB_ENV}"
 
       - name: Install sonar-scanner and build-wrapper
-        uses: SonarSource/sonarcloud-github-c-cpp@v1
+        uses: SonarSource/sonarcloud-github-c-cpp@f218be71ddd704dcf7f1b761caa6ffb14134094a # v1.3
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@37e649dae477dba3481cbec4788e5b3ca9d6e170 # v3.1.0
         with:
           version: ${{ env.QT_VERSION }}
           target: desktop
@@ -121,6 +119,6 @@ jobs:
           mv GUI*.AppImage "${{ env.ARTIFACT_PATH }}"
 
       - name: Upload the AppImage
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3.1.2
         with:
           path: ${{ env.ARTIFACT_PATH }}
