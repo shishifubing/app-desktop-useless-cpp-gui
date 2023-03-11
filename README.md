@@ -28,6 +28,16 @@ is not suitable for that particular app, so I abandoned it.
 - Basic C++, Qt5
 - Packaged as an AppImage
 
+### Usage
+
+```bash
+curl https://api.github.com/repos/shishifubing/app-desktop-useless-cpp-gui/releases/latest \
+  | jq -r .assets[].browser_download_url                                                   \
+  | xargs wget
+chmod +x app-desktop-useless-cpp-gui.AppImage
+./app-desktop-useless-cpp-gui.AppImage
+```
+
 ### Demo
 
 > **Note**
