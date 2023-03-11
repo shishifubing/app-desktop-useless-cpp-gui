@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v0.3.42 - 2023-03-11
+
+<!-- Release notes generated using configuration in .github/release.yml at v0.3.42 -->
+### What's Changed
+
+#### Documentation
+
+- Add Usage section by @tiandaoburen in https://github.com/shishifubing/app-desktop-useless-cpp-gui/pull/45
+
+**Full Changelog**: https://github.com/shishifubing/app-desktop-useless-cpp-gui/compare/v0.3.38...v0.3.42
+
 ## v0.3.38 - 2023-03-11
 
 <!-- Release notes generated using configuration in .github/release.yml at v0.3.38 -->
