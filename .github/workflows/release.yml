@@ -13,6 +13,7 @@ jobs:
 
   release:
     uses: shishifubing/ci-actions-common/.github/workflows/release.yml@f717268ef935593ab358c347b9418261a434c1fb # v0.6.9
+    needs: build
     secrets: inherit
     with: 
       download: true
