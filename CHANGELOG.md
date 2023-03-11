@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v0.3.38 - 2023-03-11
+
+<!-- Release notes generated using configuration in .github/release.yml at v0.3.38 -->
+### What's Changed
+
+#### Documentation
+
+- Add badges to README.md by @tiandaoburen in https://github.com/shishifubing/app-desktop-useless-cpp-gui/pull/43
+
+### New Contributors
+
+- @shishifubing-bot made their first contribution in https://github.com/shishifubing/app-desktop-useless-cpp-gui/pull/39
+- @dependabot made their first contribution in https://github.com/shishifubing/app-desktop-useless-cpp-gui/pull/41
+
+**Full Changelog**: https://github.com/shishifubing/app-desktop-useless-cpp-gui/compare/v0.3.33...v0.3.38
+
 ## v0.3.33 - 2023-03-11
 
 <!-- Release notes generated using configuration in .github/release.yml at v0.3.33 -->
