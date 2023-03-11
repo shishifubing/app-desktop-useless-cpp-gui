@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## v0.3.44 - 2023-03-11
+
+<!-- Release notes generated using configuration in .github/release.yml at v0.3.44 -->
+### What's Changed
+
+#### Documentation
+
+- Add v0.3.38 to CHANGELOG.md [skip ci] by @shishifubing-bot in https://github.com/shishifubing/app-desktop-useless-cpp-gui/pull/44
+- Add Usage section by @tiandaoburen in https://github.com/shishifubing/app-desktop-useless-cpp-gui/pull/45
+
+#### Other Changes
+
+- Remove issue labeler workflow by @tiandaoburen in https://github.com/shishifubing/app-desktop-useless-cpp-gui/pull/46
+- Use a reusable workflow in the release workflow by @tiandaoburen in https://github.com/shishifubing/app-desktop-useless-cpp-gui/pull/47
+- Add 'needs' to the release workflow, modify exclude section in the config by @tiandaoburen in https://github.com/shishifubing/app-desktop-useless-cpp-gui/pull/49
+- Replace hashes with branches by @tiandaoburen in https://github.com/shishifubing/app-desktop-useless-cpp-gui/pull/51
+
+**Full Changelog**: https://github.com/shishifubing/app-desktop-useless-cpp-gui/compare/v0.3.38...v0.3.44
+
 ## v0.3.38 - 2023-03-11
 
 <!-- Release notes generated using configuration in .github/release.yml at v0.3.38 -->
