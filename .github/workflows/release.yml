@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Get release info
         id: info
-        uses: shishifubing/ci-actions-common/actions/release-info@f863ce302be8dd9b0a5a4245b50858b07b4066bf # v0.6.1
+        uses: shishifubing/ci-actions-common/actions/release-info@48ce595debac2eb5f2fb18ed3e86ea01f1ea23ca # v0.6.5
         env:
           GH_TOKEN: ${{ github.token }}
 
