@@ -7,5 +7,5 @@ on:
 
 jobs:
   tag:
-    uses: shishifubing/ci-actions-common/.github/workflows/tag.yml@48ce595debac2eb5f2fb18ed3e86ea01f1ea23ca # v0.6.5
+    uses: shishifubing/ci-actions-common/.github/workflows/tag.yml@main
     secrets: inherit
