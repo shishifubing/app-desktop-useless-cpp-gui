@@ -64,7 +64,7 @@ chmod +x app-desktop-useless-cpp-gui.AppImage
 
 <!-- project badge links -->
 
-[badge-workflow-release]: https://github.com/shishifubing/app-desktop-useless-cpp-gui/actions/workflows/release.yml/badge.svg?branch=main
+[badge-workflow-release]: https://img.shields.io/github/actions/workflow/status/shishifubing/app-desktop-useless-cpp-gui/release.yml?branch=main&label=release&logo=github
 [badge-version]: https://img.shields.io/github/v/release/shishifubing/app-desktop-useless-cpp-gui?label=version
 [badge-license]: https://img.shields.io/github/license/shishifubing/app-desktop-useless-cpp-gui.svg
 [badge-status-abandoned]: https://img.shields.io/badge/status-abandoned-red
@@ -72,7 +72,7 @@ chmod +x app-desktop-useless-cpp-gui.AppImage
 
 <!-- other badge links -->
 
-[badge-conventionalcommits]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white
+[badge-conventionalcommits]: https://img.shields.io/badge/conventional--commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white
 [badge-appimage]: https://raw.githubusercontent.com/AppImage/docs.appimage.org/master/source/_static/img/download-appimage-banner.svg
 
 <!-- sonar badge links -->
