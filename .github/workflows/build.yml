@@ -11,3 +11,4 @@ jobs:
   build:
     name: reuse-build
     uses: ./.github/workflows/reuse-build.yml
+    secrets: inherit
