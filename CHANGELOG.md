@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.3.52 - 2023-03-12
+
+### Documentation
+
+- **readme**: switch github badges to shields.io by @tiandaoburen in [#60](https://github.com/shishifubing/app-desktop-useless-cpp-gui/pull/60)
+
+**Full Changelog**: https://github.com/shishifubing/app-desktop-useless-cpp-gui/compare/v0.3.44...v0.3.52
+
 ## v0.3.44 - 2023-03-11
 
 <!-- Release notes generated using configuration in .github/release.yml at v0.3.44 -->
