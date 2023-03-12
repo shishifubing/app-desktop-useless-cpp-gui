@@ -1,11 +1,6 @@
-name: build
+name: reuse-build
 
 on:
-  pull_request:
-    paths:
-      - GUI
-      - .github/**/*
-  workflow_dispatch:
   workflow_call:
 
 env:
