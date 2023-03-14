@@ -44,7 +44,7 @@ chmod +x app-desktop-useless-cpp-gui.AppImage
 >
 > WebM is broken on Edge, try another browser
 
-[Screencast.webm](https://user-images.githubusercontent.com/97828377/218940781-ffbede8c-d3a1-497c-aabf-484bcea08b12.webm)
+[url-demo]
 
 <!-- relative links -->
 
@@ -61,6 +61,7 @@ chmod +x app-desktop-useless-cpp-gui.AppImage
 <!-- external links -->
 
 [url-conventionalcommits]: https://conventionalcommits.org
+[url-demo]: https://user-images.githubusercontent.com/97828377/218940781-ffbede8c-d3a1-497c-aabf-484bcea08b12.webm
 
 <!-- project badge links -->
 
